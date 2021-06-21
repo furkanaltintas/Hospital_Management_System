@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    @Html.Partial("_PartialHead")
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <section id="wrapper" class="login-register">
+        <div class="login-box">
+            <div class="white-box">
+                <div class="form-horizontal form-material">
+
+                    @*<form class="form-horizontal form-material" id="loginform" action="index.html">*@
+                    @RenderBody()
+                    @*</form>*@
+
+                    <form class="form-horizontal" id="recoverform" action="index.html">
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <h3>Parolamı Sıfırla</h3>
+                                <p class="text-muted">
+                                    E-postanızı girin ve talimatlar size gönderilecektir!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input id="uyeMail" class="form-control" type="text" placeholder="Mail Giriniz">
+                            </div>
+                        </div>
+                        <div class="form-group text-center m-t-20">
+                            <div class="col-xs-12">
+                                <button id="sifirla" class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="button">Sıfırla</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    @Html.Partial("_PartialScripts")
+</body>
+</html>
+
+
+

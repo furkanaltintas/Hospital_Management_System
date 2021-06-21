@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2d40154ad38c4dc99b1d11b0f488cc39" Name="Diagram1" ZoomLevel="110">
+        <EntityTypeShape EntityType="HastaneOtomasyon.ELMAH_Error" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.hastaBilgi" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.hastaSikayet" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.idrarTup" Width="1.5" PointX="8.25" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.kanGrubu" Width="1.5" PointX="1.5" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.kanTup" Width="1.5" PointX="8.25" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.kullanici" Width="1.5" PointX="10.5" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.muayene" Width="1.5" PointX="7.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.muayeneSonuc" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.personel" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.poliklinik" Width="1.5" PointX="3" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.randevu" Width="1.5" PointX="7.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.randevuSaat" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.recete" Width="1.5" PointX="10.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.receteBilgi" Width="1.5" PointX="12.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.sysdiagrams" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.tahlil" Width="1.5" PointX="10.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.unvan" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.yetki" Width="1.5" PointX="1.5" PointY="34.375" IsExpanded="true" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_tahlilDurum_idrarTup" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_personel_kanGrubu" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_tahlilDurum_kanTup" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_kullanici_personel" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_kullanici_yetki" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_muayene_personel" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_muayene_randevu" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_muayene_tahlilDurum" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_personel_poliklinik" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_personel_yetki" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_randevu_personel" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_recete_personel" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_tahlilDurum_personel" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_randevu_poliklinik" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_randevu_randevuSaat" ManuallyRouted="false" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_receteBilgi_recete" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.ameliyat" Width="1.5" PointX="12.75" PointY="19.25" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_ameliyat_hastaBilgi" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_ameliyat_tahlil" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.ameliyatKadro" Width="1.5" PointX="7.5" PointY="19.375" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_ameliyatKadrosu_personel" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.ameliyatOdasi" Width="1.5" PointX="0.75" PointY="6.875" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_ameliyat_ameliyatOdasi" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.ameliyatEkip" Width="1.5" PointX="3.375" PointY="7" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_ameliyat_ameliyatEkip" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_ameliyatKadrosu_ameliyatEkip" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.bolum" Width="1.5" PointX="0.75" PointY="16.5" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_ameliyat_bolum" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_personel_bolum" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_poliklinik_bolum" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.hastaneOda" Width="1.5" PointX="5.375" PointY="6.875" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.vatandasYetki" Width="1.5" PointX="7.375" PointY="0.875" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.hasta" Width="1.5" PointX="15.625" PointY="13.625" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_ameliyat_hasta" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_hasta_kanGrubu" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_hasta_vatandasYetki" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_hastaBilgi_hasta" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_muayene_hasta" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_randevu_hasta" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_recete_hasta" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_tahlilDurum_hasta" />
+        <EntityTypeShape EntityType="HastaneOtomasyon.ameliyatSonuc" Width="1.5" PointX="18" PointY="14.25" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_ameliyatSonuc_ameliyat" />
+        <AssociationConnector Association="HastaneOtomasyon.FK_ameliyatSonuc_hastaneOda" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

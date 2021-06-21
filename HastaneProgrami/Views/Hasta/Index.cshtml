@@ -1,0 +1,72 @@
+﻿@using HastaneProgrami.Models.Entity_Framework
+@model List<hasta>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <table id="hasta" class="table table-bordered table-hover text-center">
+        <thead>
+            <tr>
+                <th class="text-center">HASTA AD SOYAD</th>
+                <th class="text-center">HASTA TC KİMLİK NO</th>
+                <th class="text-center">HASTA CİNSİYET</th>
+                <th class="text-center">HASTA YAŞ</th>
+                <th class="text-center">HASTA DOĞUM TARİHİ</th>
+                <th class="text-center">GÜNCELLE</th>
+                <th class="text-center">BİLGİLER</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.adi.ToUpper() @x.soyadi.ToUpper()</td>
+                    <td>@Html.DisplayFor(modelItem => x.TCKimlikNo)</td>
+                    <td>@(x.cinsiyet==true?"ERKEK":"KADIN")</td>
+                    <td>@(DateTime.Now.Year - x.dogumTarihi.Year)</td>
+                    <td>@(x.dogumTarihi.ToString("dd-MM-yyyy"))</td>
+                    <td><a href="/Hasta/Guncelle/@x.hastaID" class="btn btn-success">GÜNCELLE</a></td>
+                    <td><a href="/Hasta/Bilgiler/@x.hastaID" class="btn btn-twitter">BİLGİLER</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<a href="/Hasta/Ekle" class="btn btn-primary">YENİ HASTA EKLE</a>
+
+@*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.css" />*@
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.js"></script>
+
+<script>
+    $('#hasta').DataTable({
+        language: {
+            info: "_TOTAL_ kayıttan _START_ - _END_ kayıt gösteriliyor.",
+            infoEmpty: "Gösterilecek hiç kayıt yok.",
+            loadingRecords: "Kayıtlar yükleniyor.",
+            zeroRecords: "Tablo boş",
+            search: "Arama: ",
+            infoFiltered: "(toplam _MAX_ kayıttan filtrelenenler)",
+            buttons: {
+                copyTitle: "Tabloya kopyalandı.",
+                copySuccess: "Tabloya %d satır kopyalandı",
+                copy: "Kopyala",
+                print: "Yazdır",
+            },
+
+            paginate: {
+                first: "İlk",
+                previous: "Önceki",
+                next: "Sonraki",
+                last: "Son"
+            },
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf', 'print'
+        ],
+        responsive: true
+    });
+</script>

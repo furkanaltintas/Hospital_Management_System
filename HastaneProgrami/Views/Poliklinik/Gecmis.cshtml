@@ -1,0 +1,87 @@
+﻿@model IEnumerable<HastaneProgrami.Models.Entity_Framework.poliklinik>
+
+@{
+    ViewBag.Title = "Gecmis";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <table id="eskipoliklinik" class="table table-bordered table-hover text-center">
+
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-danger" style="background: #fb7878; border-color: #fb7878;" role="alert">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                Eski Poliklinik bulunmamaktadır
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                @Model.Count() adet eski poliklinik bulunmaktadır
+            </div>
+            <thead>
+                <tr>
+                    <th class="text-center">POLİKLİNİK AD</th>
+                    <th class="text-center">POLİKLİNİK DETAY</th>
+                    <th class="text-center">POLİKLİNİK AKTİF ET</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ad)
+                        </td>
+                        <td>
+                            <a class="btn btn-twitter" href="/Poliklinik/Detay/@item.poliklinikID">DETAYLAR</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-googleplus" href="/Poliklinik/AktifEt/@item.poliklinikID">AKTİF ET</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        }
+    </table>
+</div>
+
+@*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.css" />*@
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.js"></script>
+
+<script>
+    $('#eskipoliklinik').DataTable({
+        language: {
+            info: "_TOTAL_ kayıttan _START_ - _END_ kayıt gösteriliyor.",
+            infoEmpty: "Gösterilecek hiç kayıt yok.",
+            loadingRecords: "Kayıtlar yükleniyor.",
+            zeroRecords: "Tablo boş",
+            search: "Arama: ",
+            infoFiltered: "(toplam _MAX_ kayıttan filtrelenenler)",
+            buttons: {
+                copyTitle: "Tabloya kopyalandı.",
+                copySuccess: "Tabloya %d satır kopyalandı",
+                copy: "Kopyala",
+                print: "Yazdır",
+            },
+
+            paginate: {
+                first: "İlk",
+                previous: "Önceki",
+                next: "Sonraki",
+                last: "Son"
+            },
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf', 'print'
+        ],
+        responsive: true
+    });
+</script>
+
+
+

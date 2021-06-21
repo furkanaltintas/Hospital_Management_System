@@ -1,0 +1,73 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.hasta
+
+@{
+    ViewBag.Title = "İletişim Bilgileri";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("IletisimBilgileri", "Vatandas", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <h3>Telefon Bilgileri</h3>
+        <hr />
+
+        @Html.LabelFor(model => model.cepTel, "CEP TELEFONU")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+            @Html.EditorFor(model => model.cepTel, new { htmlAttributes = new { @class = "form-control", @id = "input-phone" } })
+            @Html.ValidationMessageFor(model => model.cepTel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.evTel, "EV TELEFONU")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-home"></i></div>
+            @Html.TextBoxFor(model => model.evTel, new { @class = "form-control", @maxLength = "10"})
+            @Html.ValidationMessageFor(model => model.evTel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        <h3>E-posta Bilgileri</h3>
+        <hr />
+        @Html.LabelFor(model => model.email, "MAIL")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+            @Html.TextBoxFor(model => model.email, new { @class = "form-control", @maxLength = "45" })
+            <div class="input-group-addon"><x class="">@@gmail.com</x></div>
+            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-success">
+            <i class="fa fa-check"></i>
+            Bilgileri Güncelle
+        </button>
+        @ViewBag.Basarisiz
+        @ViewBag.Basarili
+    </div>
+}
+
+<script src="~/Scripts/cleave.js"></script>
+<script src="~/Scripts/cleave-phone.i18n.js"></script>
+
+<script>
+    var cleave = new Cleave('#input-phone', {
+        phone: true,
+        phoneRegionCode: 'TR'
+    });
+
+    $('#select-country').change(function () {
+        cleave.setPhoneRegionCode(this.value);
+        cleave.setRawValue('');
+    });
+</script>
+

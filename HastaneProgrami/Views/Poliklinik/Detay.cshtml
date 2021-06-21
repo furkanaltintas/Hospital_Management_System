@@ -1,0 +1,59 @@
+﻿@using HastaneProgrami.Models.Entity_Framework
+@model   List<personel>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+    <script>
+    $('telefon').mask("+90(999)999-99-99")
+    </script>
+
+<div>
+    <h3>POLİKLİNİK ÇALIŞANLARI</h3>
+    <hr />
+    <table id="poliklinik" class="table table-bordered table-hover text-center">
+
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-danger" style="background: #fb7878; border-color: #fb7878;" role="alert">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                Bu poliklinikte çalışan personel yok
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                @Model.Count() adet çalışan bulunmaktadır
+            </div>
+        }
+
+        <thead>
+            <tr>
+                <th class="text-center">ADI SOYADI</th>
+                <th class="text-center">UNVAN</th>
+                <th class="text-center">CİNSİYET</th>
+                <th class="text-center">TELEFON NUMARASI</th>
+                <th class="text-center">EMAİL</th>
+                <th class="text-center">KAYIT TARİHİ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.adi @item.soyadi</td>
+                    <td>@item.yetki.yetkiAd</td>
+                    <td>@(item.cinsiyet==true?"Erkek":"Kadın")</td>
+                    <td>@item.cepTel</td>
+                    <td>@item.email</td>
+                    <td>@item.kayitTarihi</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <hr />
+    <a href="/Poliklinik/Index" class="btn btn-facebook">Geriye Dön</a>
+</div>
+

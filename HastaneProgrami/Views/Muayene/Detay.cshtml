@@ -1,0 +1,143 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.muayene
+
+@{
+    ViewBag.Title = "MUAYENE DETAYI";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="form-horizontal">
+    <h3>@Html.DisplayFor(model => model.hasta.adi) @Html.DisplayFor(model => model.hasta.soyadi)'ın Bilgileri</h3>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <h4>PERSONEL BİLGİLERİ</h4>
+        @Html.LabelFor(model => model.hasta.adi, "ADI")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+            @Html.TextBoxFor(model => model.hasta.adi, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.adi, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hasta.soyadi, "SOYADI")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-medkit"></i></div>
+            @Html.TextBoxFor(model => model.hasta.soyadi, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.soyadi, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hasta.TCKimlikNo, "T.C KİMLİK NO")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-certificate"></i></div>
+            @Html.TextBoxFor(model => model.hasta.TCKimlikNo, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.TCKimlikNo, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hasta.dogumYeri, "DOĞUM YERİ")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-bed"></i></div>
+            @Html.TextBoxFor(model => model.hasta.dogumYeri, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.dogumYeri, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hasta.kanGrubu.kanGrubuAdi, "KAN GRUBU")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-tint"></i></div>
+            @Html.TextBoxFor(model => model.hasta.kanGrubu.kanGrubuAdi, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.kanGrubu.kanGrubuAdi, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hasta.cinsiyet, "CİNSİYET")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-venus-mars"></i></div>
+            @Html.DropDownListFor(m => m.hasta.cinsiyet, new List<SelectListItem>
+    { new SelectListItem{Text="Erkek", Value="True"},
+     new SelectListItem{Text="Kadın", Value="False"}}, new { @class = "form-control", @disabled = "disabled" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.cinsiyet, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hasta.email, "MAIL")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+            @Html.TextBoxFor(model => model.hasta.email, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.email, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hasta.dogumTarihi, "DOĞUM TARİHİ")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-birthday-cake"></i></div>
+            @Html.TextBoxFor(model => model.hasta.dogumTarihi, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.dogumTarihi, "", new { @class = "text-danger" })
+
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        <h4>HESAP BİLGİLERİ</h4>
+        @Html.LabelFor(model => model.hasta.cepTel, "CEP TELEFONU")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+            @Html.TextBoxFor(model => model.hasta.cepTel, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.cepTel, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hasta.evTel, "EV TELEFONU")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-home"></i></div>
+            @Html.TextBoxFor(model => model.hasta.evTel, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.evTel, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hasta.adres, "ADRES")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-map"></i></div>
+            @Html.TextBoxFor(model => model.hasta.adres, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.adres, "", new { @class = "text-danger" })
+
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        <h4>SGK BİLGİLERİ</h4>
+        @Html.LabelFor(model => model.hasta.sicilNo, "SİCİL NO")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-barcode"></i></div>
+            @Html.TextBoxFor(model => model.hasta.sicilNo, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hasta.sicilNo, "", new { @class = "text-danger" })
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        <div class="input-group">
+            <a href="/Muayene/Index" class="btn btn-facebook">Geriye Dön</a>
+        </div>
+    </div>
+</div>
+

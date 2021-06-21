@@ -1,0 +1,11 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.personel
+
+<option value="">-- Personel Seç --</option>
+
+@if (ViewBag.perListesi != null)
+{
+    foreach (var item in ViewBag.perListesi)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+}

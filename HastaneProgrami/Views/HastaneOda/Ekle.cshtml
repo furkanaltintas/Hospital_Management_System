@@ -1,0 +1,43 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.hastaneOda
+
+@{
+    ViewBag.Title = "HASTANE ODASI EKLE";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ad, "ODA ADI")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-bed" aria-hidden="true"></i></div>
+            @Html.TextBoxFor(m => m.ad, new { @class = "form-control" })
+        </div>
+        @Html.ValidationMessageFor(model => model.ad, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.baslangic, "ODA KONTENJAN SAYISI")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-toggle-on" aria-hidden="true"></i></div>
+            @Html.TextBoxFor(m => m.baslangic, new { @class = "form-control", @type = "number" })
+        </div>
+        @Html.ValidationMessageFor(model => model.baslangic, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <h4>@ViewBag.Hata</h4>
+    </div>
+
+    <div class="form-group">
+        <a href="@Url.Action("Index","HastaneOda")" class="btn btn-facebook">Geriye Dön</a>
+        <input type="submit" value="ODA AÇ" class="btn btn-success" />
+    </div>
+</div>
+}
+
+

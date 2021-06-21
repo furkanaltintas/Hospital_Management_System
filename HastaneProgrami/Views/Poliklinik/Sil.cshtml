@@ -1,0 +1,61 @@
+﻿@using HastaneProgrami.Models.Entity_Framework
+@model List<personel>
+
+@{
+    ViewBag.Title = ViewBag.ad;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+
+
+        <table id="tblhasta" class="table table-bordered table-hover text-center">
+
+            @if (Model.Count() == 0)
+            {
+                <div class="alert alert-danger" style="background: #fb7878; border-color: #fb7878;" role="alert">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    Personel bulunmamaktadır
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                    @Model.Count() adet personel bulunmaktadır
+                </div>
+
+                <h4>POLİKLİNİK SİL DERSENİZ, POLİKLİNİK İLE BİRLİKTE PERSONELLERDE SİLİNECEKTİR!!!</h4>
+                <hr />
+
+                <thead>
+                    <tr>
+                        <th class="text-center">PERSONEL ADI SOYADI</th>
+                        <th class="text-center">PERSONEL UNVAN</th>
+                        <th class="text-center">PERSONEL T.C KİMLİK NO</th>
+                        <th class="text-center">DİPLOMA NO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.adi.ToUpper() @item.soyadi.ToUpper()</td>
+                            <td>@item.yetki.yetkiAd</td>
+                            <td>@item.TCKimlikNo</td>
+                            <td>@item.diplomaNo</td>
+                        </tr>
+                    }
+                </tbody>
+            }
+        </table>
+
+            <a href="/Poliklinik/Index" class="btn btn-facebook">Geriye Dön</a>
+            <button class="btn btn-googleplus">POLİKLİNİK SİL</button>
+    </div>
+}

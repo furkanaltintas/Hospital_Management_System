@@ -1,0 +1,38 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.ameliyatEkip
+
+@{
+    ViewBag.Title = "AMELİYAT EKİBİ EKLE";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ad, "AMELİYAT EKİBİ İSMİ")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-university"></i></div>
+                @Html.TextBoxFor(m => m.ad, new { @class = "form-control", @maxLength = "25" })
+            </div>
+            @Html.ValidationMessageFor(m => m.ad, "", new { @style = "color: red" })
+        </div>
+
+        <div class="form-group">
+            <h4>@ViewBag.Hata</h4>
+        </div>
+
+        <div class="form-group">
+            <div class="">
+                <a href="@Url.Action("Index","AmeliyatEkip")" class="btn btn-facebook">GERİYE DÖN</a>
+                <button class="btn btn-success">AMELİYAT EKİBİ EKLE</button>
+            </div>
+        </div>
+    </div>
+}
+
+

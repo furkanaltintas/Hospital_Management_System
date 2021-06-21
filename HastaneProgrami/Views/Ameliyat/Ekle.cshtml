@@ -1,0 +1,101 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.ameliyat
+
+@{
+    ViewBag.Title = "AMELİYAT İŞLEM";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script type="text/javascript">
+    CKEDITOR.replace('editor')
+</script>
+
+@using (Html.BeginForm("Ekle", "Ameliyat", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ad, "AMELİYAT ADI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                @Html.TextBoxFor(model => model.ad, new { @class = "form-control", @maxLength = "50" })
+            </div>
+            @Html.ValidationMessageFor(model => model.ad, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.aciklama, "AMELİYAT AÇIKLAMASI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></div>
+                <textarea name="aciklama" class="ckeditor"></textarea>
+            </div>
+            @Html.ValidationMessageFor(model => model.aciklama, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ameliyatBaslangicTarih, "AMELİYAT BAŞLANGIÇ TARİHİ")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                @Html.TextBoxFor(model => model.ameliyatBaslangicTarih, new { @class = "form-control", @maxLength = "25" })
+            </div>
+            @Html.ValidationMessageFor(model => model.ameliyatBaslangicTarih, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ameliyatBaslangicSaati, "AMELİYAT BAŞLANGIÇ SAATİ")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+                @Html.TextBoxFor(model => model.ameliyatBaslangicSaati, new { @class = "form-control", @maxLength = "25" })
+            </div>
+            @Html.ValidationMessageFor(model => model.ameliyatBaslangicSaati, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.belge, "AMELİYAT BELGESİ")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-image" aria-hidden="true"></i></div>
+                @Html.TextBoxFor(x => x.belge, new { @class = "form-control", @type = "file", @name = "belge" })
+            </div>
+            @Html.ValidationMessageFor(model => model.belge, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ameliyatOdasiID, "AMELİYAT ODASI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-close" aria-hidden="true"></i></div>
+                @Html.DropDownList("ameliyatOdasiID", (IEnumerable<SelectListItem>)ViewBag.oda, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.ameliyatOdasiID, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ameliyatEkibiID, "AMELİYAT EKİP")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-close" aria-hidden="true"></i></div>
+                @Html.DropDownList("ameliyatEkibiID", (IEnumerable<SelectListItem>)ViewBag.ekip, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.ameliyatEkibiID, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.onay, "AMELİYATI ONAYLIYOR MUSUNUZ ?")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-check" aria-hidden="true"></i></div>
+                @Html.DropDownListFor(m => m.onay, new List<SelectListItem>
+               { new SelectListItem{Text="EVET", Value="True"},
+                 new SelectListItem{Text="HAYIR", Value="False"}}, "AMELİYAT ONAYI", new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.onay, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @ViewBag.Ameliyat
+        </div>
+
+        <div class="form-group">
+            <a href="/Ameliyat/Index" class="btn btn-facebook">Geriye Dön</a>
+            <input type="submit" value="KONTROL ET" class="btn btn-success" />
+        </div>
+    </div>
+}

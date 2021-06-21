@@ -1,0 +1,31 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.ameliyatEkip
+
+@{
+    ViewBag.Title = "AMELİYAT EKİP GÜNCELLEME";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ameliyatEkipID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ad, "AMELİYAT EKİP ADI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-university"></i></div>
+                @Html.TextBoxFor(model => model.ad, new { @class = "form-control", @maxLength = "45" })
+            </div>
+            @Html.ValidationMessageFor(model => model.ad, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <a href="@Url.Action("Index","AmeliyatEkip")" class="btn btn-facebook">Geriye Dön</a>
+            <input type="submit" value="Güncelle" class="btn btn-success" />
+        </div>
+    </div>
+}

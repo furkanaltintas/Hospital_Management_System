@@ -1,0 +1,113 @@
+﻿@model IEnumerable<HastaneProgrami.Models.Entity_Framework.personel>
+
+@{
+    ViewBag.Title = "AKTİF PERSONELLER";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <table id="personel" class="table table-bordered table-hover text-center">
+
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-danger" style="background: #fb7878; border-color: #fb7878;" role="alert">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                Personel bulunmamaktadır
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                @Model.Count() adet aktif personel bulunmaktadır
+            </div>
+            <thead>
+                <tr>
+                    <th class="text-center">AD SOYAD</th>
+                    <th class="text-center">POLİKLİNİK</th>
+                    <th class="text-center">BÖLÜM</th>
+                    <th class="text-center">UNVAN</th>
+                    <th class="text-center">T.C KİMLİK NO</th>
+                    <th class="text-center">MAIL</th>
+                    <th class="text-center">TELEFON</th>
+                    <th class="text-center">GÜNCELLE</th>
+                    <th class="text-center">DETAY</th>
+                    <th class="text-center">ÇIKAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.adi) @Html.DisplayFor(modelItem => item.soyadi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.poliklinik.ad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bolum.ad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.yetki.yetkiAd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TCKimlikNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cepTel)
+                    </td>
+                    <td>
+                        <a class="btn btn-success" href="/Personel/Guncelle/@item.personelID">GÜNCELLE</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-twitter" href="/Personel/Detay/@item.personelID">DETAYLAR</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-youtube" href="/Personel/Cikar/@item.personelID">ÇIKAR</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        }
+    </table>
+    <a class="btn btn-primary" href="/Personel/Ekle">YENİ PERSONEL EKLE</a>
+</div>
+
+@*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.css" />*@
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.js"></script>
+
+<script>
+    $('#personel').DataTable({
+        language: {
+            info: "_TOTAL_ kayıttan _START_ - _END_ kayıt gösteriliyor.",
+            infoEmpty: "Gösterilecek hiç kayıt yok.",
+            loadingRecords: "Kayıtlar yükleniyor.",
+            zeroRecords: "Tablo boş",
+            search: "Arama: ",
+            infoFiltered: "(toplam _MAX_ kayıttan filtrelenenler)",
+            buttons: {
+                copyTitle: "Tabloya kopyalandı.",
+                copySuccess: "Tabloya %d satır kopyalandı",
+                copy: "Kopyala",
+                print: "Yazdır",
+            },
+
+            paginate: {
+                first: "İlk",
+                previous: "Önceki",
+                next: "Sonraki",
+                last: "Son"
+            },
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf', 'print'
+        ],
+        responsive: true
+    });
+</script>

@@ -1,0 +1,29 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.ameliyatKadro
+
+@{
+    ViewBag.Title = "AMELİYAT EKİBİNE PERSONEL EKLEME";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("PersonelEkle", "AmeliyatEkip", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.personelID, "EKİBE PERSONEL EKLEME")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                @Html.DropDownList("personelID", (IEnumerable<SelectListItem>)ViewBag.personel, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.personelID, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <a href="@Url.Action("Index","AmeliyatEkip")" class="btn btn-facebook">Geriye Dön</a>
+            <input type="submit" value="PERSONEL EKLE" class="btn btn-success" />
+        </div>
+    </div>
+}
+

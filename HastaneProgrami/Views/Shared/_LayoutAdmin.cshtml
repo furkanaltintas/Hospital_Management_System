@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+        @Html.Partial("_PartialHead")
+<body>
+    <div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <div id="wrapper">
+        @Html.Partial("_PartialMessage") @*menu*@
+
+        @Html.Partial("_PartialNavBar") @*yetki*@
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">@ViewBag.Title</h4>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="white-box">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+                <!--row -->
+            </div>
+        </div> @*Render Body Alanı*@
+
+        @Html.Partial("_PartialScripts") @*js*@
+
+    </div>
+
+    <footer class="footer text-center"> 2016 © Elite Admin brought to you by themedesigner.in Development by Furkan Altıntaş </footer>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.ameliyatOdasi
+
+@{
+    ViewBag.Title = ViewBag.ad;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ad, "ODA ADI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                @Html.TextBoxFor(model => model.ad, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.ad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href="@Url.Action("Index","AmeliyatOda")" class="btn btn-facebook">Geriye Dön</a>
+            <button type="submit" class="btn btn-googleplus">AMELİYAT ODA SİL</button>
+        </div>
+    </div>
+}

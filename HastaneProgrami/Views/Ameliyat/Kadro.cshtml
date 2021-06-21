@@ -1,0 +1,70 @@
+﻿@using HastaneProgrami.Models.Entity_Framework
+@model List<ameliyatKadro>
+
+@{
+    ViewBag.Title = "AMELİYAT KADROSU";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <table id="ameliyatKadro" class="table table-bordered table-hover text-center">
+
+        <thead>
+            <tr>
+                <th class="text-center">AMELİYAT EKİBİ</th>
+                <th class="text-center">AMELİYAT KADROSU</th>
+                <th class="text-center">T.C KİMLİK NO</th>
+                <th class="text-center">ÜNVANI</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.ameliyatEkip.ad</td>
+                <td>@item.personel.adi @item.personel.soyadi</td>
+                <td>@item.personel.TCKimlikNo</td>
+                <td>@item.personel.yetki.yetkiAd</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <a href="@Url.Action("Liste","Ameliyat")" class="btn btn-facebook">Geriye Dön</a>
+</div>
+
+@*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.css" />*@
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.js"></script>
+
+<script>
+    $('#ameliyatKadro').DataTable({
+        language: {
+            info: "_TOTAL_ kayıttan _START_ - _END_ kayıt gösteriliyor.",
+            infoEmpty: "Gösterilecek hiç kayıt yok.",
+            loadingRecords: "Kayıtlar yükleniyor.",
+            zeroRecords: "Tablo boş",
+            search: "Arama: ",
+            infoFiltered: "(toplam _MAX_ kayıttan filtrelenenler)",
+            buttons: {
+                copyTitle: "Tabloya kopyalandı.",
+                copySuccess: "Tabloya %d satır kopyalandı",
+                copy: "Kopyala",
+                print: "Yazdır",
+            },
+
+            paginate: {
+                first: "İlk",
+                previous: "Önceki",
+                next: "Sonraki",
+                last: "Son"
+            },
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf', 'print'
+        ],
+        responsive: true
+    });
+</script>
+
+

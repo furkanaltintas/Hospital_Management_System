@@ -1,0 +1,11 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.randevu
+
+<option value="">-- Randevu Seç --</option>
+
+@if (ViewBag.randListesi != null)
+{
+    foreach (var item in ViewBag.perListesi)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+}

@@ -1,0 +1,34 @@
+﻿@model HastaneProgrami.ViewModel.PoliklinikViewModel
+
+@{
+    ViewBag.Title = "Randevu Al";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br />
+<br />
+<div class="container">
+    <div class="form-group">
+        @if (ViewBag.PoliklinikList != null)
+        {
+            @Html.DropDownListFor(x => x.poliklinikID, ViewBag.PoliklinikList as SelectList, "-- Poliklinik Seçiniz --", new { @class = "form-control" })
+        }
+    </div>
+    <div class="form-group">
+        @Html.DropDownListFor(x => x.personelID, new SelectList(" "), "-- Hekim Seçiniz --", new { @class = "form-control" })
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#PoliklinikID").change(function () {
+            $.get("Vatandas/PersonelGetir", { id: $("#PoliklinikID").val() }, function (data) {
+                $("#PersonelID").empty();
+                $.each(data, function (index, row) {
+                    $("#PersonelID").append("<option value='" + row.PersonelID + "'>'" + row.ad + "</option>")
+                });
+            });
+        });
+    });
+</script>

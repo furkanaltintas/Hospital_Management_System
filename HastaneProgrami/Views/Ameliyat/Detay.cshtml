@@ -1,0 +1,151 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.ameliyat
+
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <h3>@Html.DisplayFor(model => model.hasta.adi) @Html.DisplayFor(model => model.hasta.soyadi)'ın Bilgileri</h3>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.hasta.adi, "ADI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                @Html.TextBoxFor(model => model.hasta.adi, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.hasta.adi, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.hasta.soyadi, "SOYADI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-medkit"></i></div>
+                @Html.TextBoxFor(model => model.hasta.soyadi, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.hasta.soyadi, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.hasta.cinsiyet, "CİNSİYET")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-venus-mars"></i></div>
+                @Html.DropDownListFor(m => m.hasta.cinsiyet, new List<SelectListItem>
+        { new SelectListItem{Text="Erkek", Value="True"},
+         new SelectListItem{Text="Kadın", Value="False"}}, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.hasta.TCKimlikNo, "T.C KİMLİK NO")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-certificate"></i></div>
+                @Html.TextBoxFor(model => model.hasta.TCKimlikNo, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.hasta.TCKimlikNo, "", new { @class = "text-danger" })
+        </div>
+
+        <hr />
+        <div class="form-group">
+            <h4>AMELİYAT BİLGİLERİ</h4>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ameliyatOdasi.ad, "AMELİYAT ODASI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-medkit"></i></div>
+                @Html.TextBoxFor(model => model.ameliyatOdasi.ad, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.ameliyatOdasi.ad, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ameliyatEkip.ad, "AMELİYAT EKİBİ")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-medkit"></i></div>
+                @Html.TextBoxFor(model => model.ameliyatEkip.ad, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.ameliyatEkip.ad, "", new { @class = "text-danger" })
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.tahlilDurum.kanTup.ad, "KAN TÜP TÜRÜ")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-eyedropper"></i></div>
+                @Html.TextBoxFor(model => model.tahlilDurum.kanTup.ad, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.tahlilDurum.kanTup.ad, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tahlilDurum.idrarTup.ad, "İDRAR TÜP TÜRÜ")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-flask"></i></div>
+                @Html.TextBoxFor(model => model.tahlilDurum.idrarTup.ad, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.tahlilDurum.idrarTup.ad, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tahlilDurum.sonuc, "SONUÇ")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-heartbeat"></i></div>
+                @Html.TextBoxFor(model => model.tahlilDurum.sonuc, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.tahlilDurum.sonuc, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tahlilDurum.durum, "DURUM")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-heart"></i></div>
+                @Html.TextBoxFor(model => model.tahlilDurum.durum, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.tahlilDurum.durum, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tahlilDurum.miktar, "MİKTAR")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-archive"></i></div>
+                @Html.TextBoxFor(model => model.tahlilDurum.miktar, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.tahlilDurum.miktar, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tahlilDurum.aciklama, "AÇIKLAMA")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+                @Html.TextBoxFor(model => model.tahlilDurum.aciklama, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.tahlilDurum.aciklama, "", new { @class = "text-danger" })
+        </div>*@
+
+        <hr />
+        <div class="form-group">
+            <h4>AMELİYAT BİLGİLERİ</h4>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.onayTarih, "AMELİYAT ONAY TARİHİ")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-times"></i></div>
+                @Html.TextBoxFor(model => model.onayTarih, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            @Html.ValidationMessageFor(model => model.onayTarih, "", new { @class = "text-danger" })
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <div class="input-group">
+                <a href="/Ameliyat/Liste" class="btn btn-facebook">Geriye Dön</a>
+            </div>
+        </div>
+    </div>
+

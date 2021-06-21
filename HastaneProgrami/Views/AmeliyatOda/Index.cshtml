@@ -1,0 +1,100 @@
+﻿@using HastaneProgrami.Models.Entity_Framework
+@model List<ameliyatOdasi>
+
+@{
+    ViewBag.Title = "AKTİF AMELİYAT ODALARI";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <table id="ameliyatOdasi" class="table table-hover text-center">
+
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-danger" style="background: #fb7878; border-color: #fb7878;" role="alert">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                Ameliyat Odası bulunmamaktadır
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                @Model.Count() adet ameliyat odası bulunmaktadır
+            </div>
+            <thead>
+                <tr>
+                    <th class="text-center">AMELİYAT ODASI</th>
+                    <th class="text-center">AMELİYAT ODASI AÇILIŞ TARİHİ</th>
+                    <th class="text-center">AMELİYAT ODA DURUM</th>
+                    <th class="text-center">GÜNCELLE</th>
+                    <th class="text-center">SİL</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ad</td>
+                        <td>@item.tarih</td>
+                        @if (item.odaDurum == true)
+                        {
+                            <td><span class="label label-success">@(item.odaDurum == true?"BOŞ":"DOLU")</span></td>
+                            <td><a href="/AmeliyatOda/Detaylar/@item.ameliyatOdasiID" class="btn btn-primary">DETAYLAR</a></td>
+                            <td><a href="/AmeliyatOda/Guncelle/@item.ameliyatOdasiID" class="btn btn-success">GÜNCELLE</a></td>
+                            <td><a href="/AmeliyatOda/Sil/@item.ameliyatOdasiID" class="btn btn-googleplus">SİL</a></td>
+                        }
+                        @if (item.odaDurum == false)
+                        {
+                            <td><span class="label label-red">@(item.odaDurum == true ? "BOŞ" : "DOLU")</span></td>
+                            <td><a href="/AmeliyatOda/Detaylar/@item.ameliyatOdasiID" class="btn btn-primary">DETAYLAR</a></td>
+                            <td><a href="/AmeliyatOda/Guncelle/@item.ameliyatOdasiID" class="btn btn-success" disabled="disabled">GÜNCELLE</a></td>
+                            <td><a href="/AmeliyatOda/Sil/@item.ameliyatOdasiID" class="btn btn-googleplus" disabled="disabled">SİL</a></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        }
+    </table>
+
+    @ViewBag.Hata
+
+    <a class="btn btn-primary" href="@Url.Action("Ekle","AmeliyatOda")">YENİ AMELİYAT ODASI EKLE</a>
+</div>
+
+@*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.css" />*@
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.js"></script>
+
+<script>
+    $('#ameliyatOdasi').DataTable({
+        language: {
+            info: "_TOTAL_ kayıttan _START_ - _END_ kayıt gösteriliyor.",
+            infoEmpty: "Gösterilecek hiç kayıt yok.",
+            loadingRecords: "Kayıtlar yükleniyor.",
+            zeroRecords: "Tablo boş",
+            search: "Arama: ",
+            infoFiltered: "(toplam _MAX_ kayıttan filtrelenenler)",
+            buttons: {
+                copyTitle: "Tabloya kopyalandı.",
+                copySuccess: "Tabloya %d satır kopyalandı",
+                copy: "Kopyala",
+                print: "Yazdır",
+            },
+
+            paginate: {
+                first: "İlk",
+                previous: "Önceki",
+                next: "Sonraki",
+                last: "Son"
+            },
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf', 'print'
+        ],
+        responsive: true
+    });
+</script>
+
+

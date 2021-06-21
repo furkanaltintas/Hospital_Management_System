@@ -1,0 +1,87 @@
+﻿@using HastaneProgrami.Models.Entity_Framework
+@model List<muayene>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <table id="muayene" class="table table-bordered table-hover text-center">
+
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-danger" style="background: #fb7878; border-color: #fb7878;" role="alert">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                Muayene bulunmamaktadır
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                @Model.Count() adet muayene bulunmaktadır
+            </div>
+            <thead>
+                <tr>
+                    <th class="text-center">HASTA ADI SOYADI</th>
+                    <th class="text-center">HASTA TC NO</th>
+                    <th class="text-center">HASTA SORUN</th>
+                    <th class="text-center">HASTA ŞİKAYET</th>
+                    <th class="text-center">MUAYENE TARİH</th>
+                    <th class="text-center">HASTA DETAY</th>
+                    <th class="text-center">HASTA BİLGİ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
+                {
+                    <tr>
+                        <td>@m.hasta.adi  @m.hasta.soyadi</td>
+                        <td>@m.hasta.TCKimlikNo</td>
+                        <td>@m.baslik</td>
+                        <td>@Html.Raw(m.aciklama)</td>
+                        <td>@m.tarih</td>
+                        <td><a href="/Muayene/Detay/@m.muayeneID" class="btn btn-twitter">HASTA DETAY</a></td>
+                        <td><a href="/Muayene/Bilgi/@m.hastaID" class="btn btn-instagram">HASTA BİLGİ</a></td>
+                    </tr>
+                }
+            </tbody>
+        }
+    </table>
+</div>
+
+@*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.css" />*@
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.js"></script>
+
+<script>
+    $('#muayene').DataTable({
+        language: {
+            info: "_TOTAL_ kayıttan _START_ - _END_ kayıt gösteriliyor.",
+            infoEmpty: "Gösterilecek hiç kayıt yok.",
+            loadingRecords: "Kayıtlar yükleniyor.",
+            zeroRecords: "Tablo boş",
+            search: "Arama: ",
+            infoFiltered: "(toplam _MAX_ kayıttan filtrelenenler)",
+            buttons: {
+                copyTitle: "Tabloya kopyalandı.",
+                copySuccess: "Tabloya %d satır kopyalandı",
+                copy: "Kopyala",
+                print: "Yazdır",
+            },
+
+            paginate: {
+                first: "İlk",
+                previous: "Önceki",
+                next: "Sonraki",
+                last: "Son"
+            },
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf', 'print'
+        ],
+        responsive: true
+    });
+</script>
+

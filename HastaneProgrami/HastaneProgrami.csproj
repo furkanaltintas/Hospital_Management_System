@@ -1,0 +1,1730 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6995CB54-D601-4F85-BF27-B77D6E5244B3}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HastaneProgrami</RootNamespace>
+    <AssemblyName>HastaneProgrami</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44316</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.10.1.0\lib\netstandard2.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.Internal, Version=5.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.Internal.5.0.5\lib\net461\Microsoft.AspNetCore.Cryptography.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation, Version=5.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.KeyDerivation.5.0.5\lib\net461\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Identity.Core, Version=5.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Identity.Core.5.0.5\lib\net461\Microsoft.Extensions.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.5.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.5.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ckeditor\adapters\jquery.js" />
+    <Content Include="Content\ckeditor\build-config.js" />
+    <Content Include="Content\ckeditor\ckeditor.js" />
+    <Content Include="Content\ckeditor\config.js" />
+    <Content Include="Content\ckeditor\contents.css" />
+    <Content Include="Content\ckeditor\lang\af.js" />
+    <Content Include="Content\ckeditor\lang\ar.js" />
+    <Content Include="Content\ckeditor\lang\az.js" />
+    <Content Include="Content\ckeditor\lang\bg.js" />
+    <Content Include="Content\ckeditor\lang\bn.js" />
+    <Content Include="Content\ckeditor\lang\bs.js" />
+    <Content Include="Content\ckeditor\lang\ca.js" />
+    <Content Include="Content\ckeditor\lang\cs.js" />
+    <Content Include="Content\ckeditor\lang\cy.js" />
+    <Content Include="Content\ckeditor\lang\da.js" />
+    <Content Include="Content\ckeditor\lang\de-ch.js" />
+    <Content Include="Content\ckeditor\lang\de.js" />
+    <Content Include="Content\ckeditor\lang\el.js" />
+    <Content Include="Content\ckeditor\lang\en-au.js" />
+    <Content Include="Content\ckeditor\lang\en-ca.js" />
+    <Content Include="Content\ckeditor\lang\en-gb.js" />
+    <Content Include="Content\ckeditor\lang\en.js" />
+    <Content Include="Content\ckeditor\lang\eo.js" />
+    <Content Include="Content\ckeditor\lang\es-mx.js" />
+    <Content Include="Content\ckeditor\lang\es.js" />
+    <Content Include="Content\ckeditor\lang\et.js" />
+    <Content Include="Content\ckeditor\lang\eu.js" />
+    <Content Include="Content\ckeditor\lang\fa.js" />
+    <Content Include="Content\ckeditor\lang\fi.js" />
+    <Content Include="Content\ckeditor\lang\fo.js" />
+    <Content Include="Content\ckeditor\lang\fr-ca.js" />
+    <Content Include="Content\ckeditor\lang\fr.js" />
+    <Content Include="Content\ckeditor\lang\gl.js" />
+    <Content Include="Content\ckeditor\lang\gu.js" />
+    <Content Include="Content\ckeditor\lang\he.js" />
+    <Content Include="Content\ckeditor\lang\hi.js" />
+    <Content Include="Content\ckeditor\lang\hr.js" />
+    <Content Include="Content\ckeditor\lang\hu.js" />
+    <Content Include="Content\ckeditor\lang\id.js" />
+    <Content Include="Content\ckeditor\lang\is.js" />
+    <Content Include="Content\ckeditor\lang\it.js" />
+    <Content Include="Content\ckeditor\lang\ja.js" />
+    <Content Include="Content\ckeditor\lang\ka.js" />
+    <Content Include="Content\ckeditor\lang\km.js" />
+    <Content Include="Content\ckeditor\lang\ko.js" />
+    <Content Include="Content\ckeditor\lang\ku.js" />
+    <Content Include="Content\ckeditor\lang\lt.js" />
+    <Content Include="Content\ckeditor\lang\lv.js" />
+    <Content Include="Content\ckeditor\lang\mk.js" />
+    <Content Include="Content\ckeditor\lang\mn.js" />
+    <Content Include="Content\ckeditor\lang\ms.js" />
+    <Content Include="Content\ckeditor\lang\nb.js" />
+    <Content Include="Content\ckeditor\lang\nl.js" />
+    <Content Include="Content\ckeditor\lang\no.js" />
+    <Content Include="Content\ckeditor\lang\oc.js" />
+    <Content Include="Content\ckeditor\lang\pl.js" />
+    <Content Include="Content\ckeditor\lang\pt-br.js" />
+    <Content Include="Content\ckeditor\lang\pt.js" />
+    <Content Include="Content\ckeditor\lang\ro.js" />
+    <Content Include="Content\ckeditor\lang\ru.js" />
+    <Content Include="Content\ckeditor\lang\si.js" />
+    <Content Include="Content\ckeditor\lang\sk.js" />
+    <Content Include="Content\ckeditor\lang\sl.js" />
+    <Content Include="Content\ckeditor\lang\sq.js" />
+    <Content Include="Content\ckeditor\lang\sr-latn.js" />
+    <Content Include="Content\ckeditor\lang\sr.js" />
+    <Content Include="Content\ckeditor\lang\sv.js" />
+    <Content Include="Content\ckeditor\lang\th.js" />
+    <Content Include="Content\ckeditor\lang\tr.js" />
+    <Content Include="Content\ckeditor\lang\tt.js" />
+    <Content Include="Content\ckeditor\lang\ug.js" />
+    <Content Include="Content\ckeditor\lang\uk.js" />
+    <Content Include="Content\ckeditor\lang\vi.js" />
+    <Content Include="Content\ckeditor\lang\zh-cn.js" />
+    <Content Include="Content\ckeditor\lang\zh.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\az.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\de-ch.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\en-au.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\es-mx.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\oc.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Content\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Content\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Content\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Content\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Content\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Content\ckeditor\plugins\dialog\styles\dialog.css" />
+    <Content Include="Content\ckeditor\plugins\icons.png" />
+    <Content Include="Content\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="Content\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Content\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Content\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Content\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Content\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Content\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Content\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="Content\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Content\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="Content\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Content\ckeditor\plugins\pastefromgdocs\filter\default.js" />
+    <Content Include="Content\ckeditor\plugins\pastefromlibreoffice\filter\default.js" />
+    <Content Include="Content\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Content\ckeditor\plugins\pastetools\filter\common.js" />
+    <Content Include="Content\ckeditor\plugins\pastetools\filter\image.js" />
+    <Content Include="Content\ckeditor\plugins\scayt\dialogs\dialog.css" />
+    <Content Include="Content\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Content\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Content\ckeditor\plugins\scayt\skins\moono-lisa\scayt.css" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\az.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\en-au.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\en-ca.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\es-mx.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\oc.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ro.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sr-latn.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sr.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Content\ckeditor\plugins\tableselection\styles\tableselection.css" />
+    <Content Include="Content\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Content\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Content\ckeditor\plugins\widget\images\handle.png" />
+    <Content Include="Content\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Content\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Content\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Content\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\icons\hidpi\spellchecker.png" />
+    <Content Include="Content\ckeditor\plugins\wsc\icons\spellchecker.png" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\af.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\ar.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\bg.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\bn.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\bs.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\ca.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\cs.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\cy.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\da.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\de.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\el.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\en-au.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\en-ca.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\en-gb.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\en.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\eo.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\es.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\et.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\eu.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\fa.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\fi.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\fo.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\fr-ca.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\fr.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\gl.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\gu.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\he.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\hi.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\hr.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\hu.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\is.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\it.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\ja.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\ka.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\km.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\ko.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\ku.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\lt.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\lv.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\mk.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\mn.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\ms.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\nb.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\nl.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\no.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\pl.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\pt-br.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\pt.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\ro.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\ru.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\sk.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\sl.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\sr-latn.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\sr.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\sv.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\th.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\tr.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\ug.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\uk.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\vi.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\zh-cn.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\lang\zh.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\plugin.js" />
+    <Content Include="Content\ckeditor\plugins\wsc\skins\moono-lisa\wsc.css" />
+    <Content Include="Content\ckeditor\samples\css\samples.css" />
+    <Content Include="Content\ckeditor\samples\img\github-top.png" />
+    <Content Include="Content\ckeditor\samples\img\header-bg.png" />
+    <Content Include="Content\ckeditor\samples\img\header-separator.png" />
+    <Content Include="Content\ckeditor\samples\img\logo.png" />
+    <Content Include="Content\ckeditor\samples\img\logo.svg" />
+    <Content Include="Content\ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="Content\ckeditor\samples\index.html" />
+    <Content Include="Content\ckeditor\samples\js\sample.js" />
+    <Content Include="Content\ckeditor\samples\js\sf.js" />
+    <Content Include="Content\ckeditor\samples\old\ajax.html" />
+    <Content Include="Content\ckeditor\samples\old\api.html" />
+    <Content Include="Content\ckeditor\samples\old\appendto.html" />
+    <Content Include="Content\ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="Content\ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Content\ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="Content\ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="Content\ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="Content\ckeditor\samples\old\datafiltering.html" />
+    <Content Include="Content\ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="Content\ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="Content\ckeditor\samples\old\divreplace.html" />
+    <Content Include="Content\ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="Content\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="Content\ckeditor\samples\old\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Content\ckeditor\samples\old\htmlwriter\outputforflash.html" />
+    <Content Include="Content\ckeditor\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="Content\ckeditor\samples\old\index.html" />
+    <Content Include="Content\ckeditor\samples\old\inlineall.html" />
+    <Content Include="Content\ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="Content\ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="Content\ckeditor\samples\old\jquery.html" />
+    <Content Include="Content\ckeditor\samples\old\magicline\magicline.html" />
+    <Content Include="Content\ckeditor\samples\old\readonly.html" />
+    <Content Include="Content\ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="Content\ckeditor\samples\old\replacebycode.html" />
+    <Content Include="Content\ckeditor\samples\old\sample.css" />
+    <Content Include="Content\ckeditor\samples\old\sample.js" />
+    <Content Include="Content\ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="Content\ckeditor\samples\old\tabindex.html" />
+    <Content Include="Content\ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="Content\ckeditor\samples\old\uicolor.html" />
+    <Content Include="Content\ckeditor\samples\old\uilanguages.html" />
+    <Content Include="Content\ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="Content\ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\dialog.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\dialog_ie.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\dialog_ie8.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\dialog_iequirks.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\editor.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\editor_gecko.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\editor_ie.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\editor_ie8.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\editor_iequirks.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\icons.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\icons_hidpi.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\arrow.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\close.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\hidpi\close.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\hidpi\lock-open.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\hidpi\lock.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\hidpi\refresh.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\lock-open.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\lock.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\refresh.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\spinner.gif" />
+    <Content Include="Content\ckeditor\styles.js" />
+    <Content Include="Content\ckeditor\vendor\promise.js" />
+    <Content Include="Content\Css\animate.css" />
+    <Content Include="Content\Css\blue.css" />
+    <Content Include="Content\Css\bootstrap.min.css" />
+    <Content Include="Content\Css\css-chart.css" />
+    <Content Include="Content\Css\jquery-jvectormap-2.0.2.css" />
+    <Content Include="Content\Css\sidebar-nav.min.css" />
+    <Content Include="Content\Css\style.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.semanticui.css" />
+    <Content Include="Content\DataTables\css\autoFill.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.min.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.semanticui.css" />
+    <Content Include="Content\DataTables\css\buttons.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.semanticui.css" />
+    <Content Include="Content\DataTables\css\colReorder.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.semanticui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.semanticui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.semanticui.css" />
+    <Content Include="Content\DataTables\css\keyTable.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.min.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.semanticui.css" />
+    <Content Include="Content\DataTables\css\responsive.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowGroup.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.foundation.css" />
+    <Content Include="Content\DataTables\css\rowGroup.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowGroup.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.semanticui.css" />
+    <Content Include="Content\DataTables\css\rowGroup.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.semanticui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.min.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.semanticui.css" />
+    <Content Include="Content\DataTables\css\scroller.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\select.foundation.css" />
+    <Content Include="Content\DataTables\css\select.foundation.min.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\select.semanticui.css" />
+    <Content Include="Content\DataTables\css\select.semanticui.min.css" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\Documentation\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="Content\Documentation\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="Content\Documentation\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Content\Documentation\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="Content\Documentation\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Documentation\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="Content\Documentation\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="Content\Documentation\bootstrap\dist\js\npm.js" />
+    <Content Include="Content\Documentation\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Documentation\bootstrap\Gruntfile.js" />
+    <Content Include="Content\Documentation\bootstrap\grunt\bs-commonjs-generator.js" />
+    <Content Include="Content\Documentation\bootstrap\grunt\bs-glyphicons-data-generator.js" />
+    <Content Include="Content\Documentation\bootstrap\grunt\bs-lessdoc-parser.js" />
+    <Content Include="Content\Documentation\bootstrap\grunt\bs-raw-files-generator.js" />
+    <Content Include="Content\Documentation\bootstrap\js\affix.js" />
+    <Content Include="Content\Documentation\bootstrap\js\alert.js" />
+    <Content Include="Content\Documentation\bootstrap\js\button.js" />
+    <Content Include="Content\Documentation\bootstrap\js\carousel.js" />
+    <Content Include="Content\Documentation\bootstrap\js\collapse.js" />
+    <Content Include="Content\Documentation\bootstrap\js\dropdown.js" />
+    <Content Include="Content\Documentation\bootstrap\js\modal.js" />
+    <Content Include="Content\Documentation\bootstrap\js\popover.js" />
+    <Content Include="Content\Documentation\bootstrap\js\scrollspy.js" />
+    <Content Include="Content\Documentation\bootstrap\js\tab.js" />
+    <Content Include="Content\Documentation\bootstrap\js\tooltip.js" />
+    <Content Include="Content\Documentation\bootstrap\js\transition.js" />
+    <Content Include="Content\Documentation\css\animate.css" />
+    <Content Include="Content\Documentation\css\colors\blue-dark.css" />
+    <Content Include="Content\Documentation\css\colors\blue.css" />
+    <Content Include="Content\Documentation\css\colors\dark-sidebar.css" />
+    <Content Include="Content\Documentation\css\colors\default-dark.css" />
+    <Content Include="Content\Documentation\css\colors\default.css" />
+    <Content Include="Content\Documentation\css\colors\gray-dark.css" />
+    <Content Include="Content\Documentation\css\colors\gray.css" />
+    <Content Include="Content\Documentation\css\colors\green-dark.css" />
+    <Content Include="Content\Documentation\css\colors\green.css" />
+    <Content Include="Content\Documentation\css\colors\light-sidebar.css" />
+    <Content Include="Content\Documentation\css\colors\megna-dark.css" />
+    <Content Include="Content\Documentation\css\colors\megna.css" />
+    <Content Include="Content\Documentation\css\colors\purple-dark.css" />
+    <Content Include="Content\Documentation\css\colors\purple.css" />
+    <Content Include="Content\Documentation\css\icons\linea-icons\linea.css" />
+    <Content Include="Content\Documentation\css\spinners.css" />
+    <Content Include="Content\Documentation\css\style.css" />
+    <Content Include="Content\Documentation\documentation.html" />
+    <Content Include="Content\Documentation\images\banner-img.jpg" />
+    <Content Include="Content\Documentation\images\bootstraps.png" />
+    <Content Include="Content\Documentation\images\charts.png" />
+    <Content Include="Content\Documentation\images\color-skim.png" />
+    <Content Include="Content\Documentation\images\customized.png" />
+    <Content Include="Content\Documentation\images\drk-vrs.jpg" />
+    <Content Include="Content\Documentation\images\ecommerce.jpg" />
+    <Content Include="Content\Documentation\images\elite-admin-logo.png" />
+    <Content Include="Content\Documentation\images\fonts.png" />
+    <Content Include="Content\Documentation\images\footer-logo.png" />
+    <Content Include="Content\Documentation\images\inbox.jpg" />
+    <Content Include="Content\Documentation\images\less.png" />
+    <Content Include="Content\Documentation\images\light-vrs.jpg" />
+    <Content Include="Content\Documentation\images\multi-upload.png" />
+    <Content Include="Content\Documentation\images\navigations.jpg" />
+    <Content Include="Content\Documentation\images\pages.png" />
+    <Content Include="Content\Documentation\images\respo.png" />
+    <Content Include="Content\Documentation\images\responsive.jpg" />
+    <Content Include="Content\Documentation\images\screen1.jpg" />
+    <Content Include="Content\Documentation\images\screen10.jpg" />
+    <Content Include="Content\Documentation\images\screen2.jpg" />
+    <Content Include="Content\Documentation\images\screen3.jpg" />
+    <Content Include="Content\Documentation\images\screen4.jpg" />
+    <Content Include="Content\Documentation\images\screen5.jpg" />
+    <Content Include="Content\Documentation\images\screen6.jpg" />
+    <Content Include="Content\Documentation\images\screen7.jpg" />
+    <Content Include="Content\Documentation\images\screen8.jpg" />
+    <Content Include="Content\Documentation\images\screen9.jpg" />
+    <Content Include="Content\Documentation\images\sidebars.png" />
+    <Content Include="Content\Documentation\images\ui-component.png" />
+    <Content Include="Content\Documentation\images\widgets.png" />
+    <Content Include="Content\Documentation\js\custom.js" />
+    <Content Include="Content\Documentation\landing.html" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-arrows-10.svg" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-basic-10.svg" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-basic-elaboration-10.svg" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-ecommerce-10.svg" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-music-10.svg" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-software-10.svg" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-weather-10.svg" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\linea.css" />
+    <Content Include="Content\Documentation\less\icons\simple-line-icons\css\simple-line-icons.css" />
+    <Content Include="Content\Documentation\less\icons\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Content\Documentation\less\icons\themify-icons\fonts\themify.svg" />
+    <Content Include="Content\Documentation\less\icons\themify-icons\ie7\ie7.css" />
+    <Content Include="Content\Documentation\less\icons\themify-icons\ie7\ie7.js" />
+    <Content Include="Content\Documentation\less\icons\themify-icons\themify-icons.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\css\weather-icons-core.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\css\weather-icons-variables.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\css\weather-icons-wind.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\css\weather-icons-wind.min.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\css\weather-icons.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\css\weather-icons.min.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\font\weathericons-regular-webfont.svg" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\css\variables-beaufort.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\css\variables-day.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\css\variables-direction.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\css\variables-misc.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\css\variables-moon.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\css\variables-neutral.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\css\variables-night.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\css\variables-time.css" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\css\variables-wind-names.css" />
+    <Content Include="Content\Documentation\less\spinners.css" />
+    <Content Include="Content\Img\alert.png" />
+    <Content Include="Content\Img\alert2.png" />
+    <Content Include="Content\Img\alert3.png" />
+    <Content Include="Content\Img\alert4.png" />
+    <Content Include="Content\Img\alert5.png" />
+    <Content Include="Content\Img\alert6.png" />
+    <Content Include="Content\Img\alert7.png" />
+    <Content Include="Content\Img\av.png" />
+    <Content Include="Content\Img\background.jpg" />
+    <Content Include="Content\Img\eliteadmin-logo.png" />
+    <Content Include="Content\Img\eliteadmin-text.png" />
+    <Content Include="Content\less\icons\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\less\icons\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\less\icons\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\less\icons\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-arrows-10.svg" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-basic-10.svg" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-basic-elaboration-10.svg" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-ecommerce-10.svg" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-music-10.svg" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-software-10.svg" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-weather-10.svg" />
+    <Content Include="Content\less\icons\linea-icons\linea.css" />
+    <Content Include="Content\less\icons\simple-line-icons\css\simple-line-icons.css" />
+    <Content Include="Content\less\icons\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Content\less\icons\themify-icons\fonts\themify.svg" />
+    <Content Include="Content\less\icons\themify-icons\ie7\ie7.css" />
+    <Content Include="Content\less\icons\themify-icons\ie7\ie7.js" />
+    <Content Include="Content\less\icons\themify-icons\themify-icons.css" />
+    <Content Include="Content\less\icons\weather-icons\css\weather-icons-core.css" />
+    <Content Include="Content\less\icons\weather-icons\css\weather-icons-variables.css" />
+    <Content Include="Content\less\icons\weather-icons\css\weather-icons-wind.css" />
+    <Content Include="Content\less\icons\weather-icons\css\weather-icons-wind.min.css" />
+    <Content Include="Content\less\icons\weather-icons\css\weather-icons.css" />
+    <Content Include="Content\less\icons\weather-icons\css\weather-icons.min.css" />
+    <Content Include="Content\less\icons\weather-icons\font\weathericons-regular-webfont.svg" />
+    <Content Include="Content\less\icons\weather-icons\less\css\variables-beaufort.css" />
+    <Content Include="Content\less\icons\weather-icons\less\css\variables-day.css" />
+    <Content Include="Content\less\icons\weather-icons\less\css\variables-direction.css" />
+    <Content Include="Content\less\icons\weather-icons\less\css\variables-misc.css" />
+    <Content Include="Content\less\icons\weather-icons\less\css\variables-moon.css" />
+    <Content Include="Content\less\icons\weather-icons\less\css\variables-neutral.css" />
+    <Content Include="Content\less\icons\weather-icons\less\css\variables-night.css" />
+    <Content Include="Content\less\icons\weather-icons\less\css\variables-time.css" />
+    <Content Include="Content\less\icons\weather-icons\less\css\variables-wind-names.css" />
+    <Content Include="Content\less\spinners.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\Entity Framework\HastaneContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HastaneContext.edmx</DependentUpon>
+      <LastGenOutput>HastaneContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Entity Framework\HastaneContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HastaneContext.edmx</DependentUpon>
+      <LastGenOutput>HastaneContext.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\cleave-phone.i18n.js" />
+    <Content Include="Scripts\cleave-phone.tr.js" />
+    <Content Include="Scripts\cleave.js" />
+    <Content Include="Scripts\CustomScript.js" />
+    <Content Include="Scripts\dataTables.bootstrap.js" />
+    <Content Include="Content\datatables.css" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.min.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.min.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.min.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.print.js" />
+    <Content Include="Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.min.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\dashboard2.js" />
+    <Content Include="Scripts\DateScript.js" />
+    <Content Include="Scripts\easy-pie-chart.init.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\ckeditor\CHANGES.md" />
+    <Content Include="Content\ckeditor\LICENSE.md" />
+    <Content Include="Content\ckeditor\plugins\scayt\CHANGELOG.md" />
+    <Content Include="Content\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Content\ckeditor\plugins\scayt\README.md" />
+    <Content Include="Content\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="Content\ckeditor\plugins\wsc\README.md" />
+    <Content Include="Content\ckeditor\README.md" />
+    <Content Include="Content\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\readme.md" />
+    <EntityDeploy Include="Models\Entity Framework\HastaneContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HastaneContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Entity Framework\HastaneContext.edmx.diagram">
+      <DependentUpon>HastaneContext.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-jvectormap-2.0.2.min.js" />
+    <Content Include="Scripts\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.easypiechart.min.js" />
+    <Content Include="Scripts\jquery.flot.js" />
+    <Content Include="Scripts\jquery.flot.tooltip.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.slimscroll.js" />
+    <Content Include="Scripts\jquery.sparkline.min.js" />
+    <Content Include="Scripts\jQuery.style.switcher.js" />
+    <Content Include="Scripts\mindmup-editabletable.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\numeric-input-example.js" />
+    <Content Include="Scripts\sidebar-nav.min.js" />
+    <Content Include="Scripts\waves.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AmeliyatController.cs" />
+    <Compile Include="Controllers\AmeliyatEkipController.cs" />
+    <Compile Include="Controllers\AmeliyatOdaController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HastaController.cs" />
+    <Compile Include="Controllers\HastaneOdaController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MuayeneController.cs" />
+    <Compile Include="Controllers\PoliklinikController.cs" />
+    <Compile Include="Controllers\PersonelController.cs" />
+    <Compile Include="Controllers\ProfilController.cs" />
+    <Compile Include="Controllers\RandevuController.cs" />
+    <Compile Include="Controllers\TahlilController.cs" />
+    <Compile Include="Controllers\VatandasController.cs" />
+    <Compile Include="Filters\ElmahExceptionFilter.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\ameliyat.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\ameliyatEkip.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\ameliyatKadro.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\ameliyatOdasi.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\ameliyatSonuc.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\bolum.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\ELMAH_Error.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\hasta.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\hastaBilgi.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\HastaneContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HastaneContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\HastaneContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\HastaneContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HastaneContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\hastaneOda.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\hastaSikayet.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\idrarTup.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\kanGrubu.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\kanTup.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\kullanici.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\muayene.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\muayeneSonuc.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\personel.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\poliklinik.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\randevu.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\randevuSaat.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\recete.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\receteBilgi.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\sysdiagrams.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\tahlil.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\unvan.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\vatandasYetki.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity Framework\yetki.cs">
+      <DependentUpon>HastaneContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Randevu.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\HastaneRoleProvider.cs" />
+    <Compile Include="ValidationRules\AmeliyatEkipValidatior.cs" />
+    <Compile Include="ValidationRules\AmeliyatOdasiValidatior.cs" />
+    <Compile Include="ValidationRules\AmeliyatSonucValidatior.cs" />
+    <Compile Include="ValidationRules\AmeliyatValidatior.cs" />
+    <Compile Include="ValidationRules\HastaBilgiValidatior.cs" />
+    <Compile Include="ValidationRules\HastaneOdaValidatior.cs" />
+    <Compile Include="ValidationRules\HastaValidatior.cs" />
+    <Compile Include="ValidationRules\MuayeneValidatior.cs" />
+    <Compile Include="ValidationRules\PersonelValidatior.cs" />
+    <Compile Include="ValidationRules\PoliklinikValidatior.cs" />
+    <Compile Include="ValidationRules\TahlilValidatior.cs" />
+    <Compile Include="ViewModel\PoliklinikViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Content\less\colors\blue-dark.less" />
+    <Content Include="Content\less\colors\blue.less" />
+    <Content Include="Content\less\colors\default-dark.less" />
+    <Content Include="Content\less\colors\default.less" />
+    <Content Include="Content\less\colors\gray-dark.less" />
+    <Content Include="Content\less\colors\gray.less" />
+    <Content Include="Content\less\colors\green-dark.less" />
+    <Content Include="Content\less\colors\green.less" />
+    <Content Include="Content\less\colors\megna-dark.less" />
+    <Content Include="Content\less\colors\megna.less" />
+    <Content Include="Content\less\colors\purple-dark.less" />
+    <Content Include="Content\less\colors\purple.less" />
+    <Content Include="Content\less\eliteadmin.less" />
+    <Content Include="Content\less\icons\font-awesome\.bower.json" />
+    <Content Include="Content\less\icons\font-awesome\.gitignore" />
+    <Content Include="Content\less\icons\font-awesome\.npmignore" />
+    <Content Include="Content\less\icons\font-awesome\bower.json" />
+    <Content Include="Content\less\icons\font-awesome\fonts\fontawesome-webfont-old.ttf" />
+    <Content Include="Content\less\icons\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\less\icons\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\less\icons\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\less\icons\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\less\icons\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\less\icons\font-awesome\less\animated.less" />
+    <Content Include="Content\less\icons\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\less\icons\font-awesome\less\core.less" />
+    <Content Include="Content\less\icons\font-awesome\less\extras.less" />
+    <Content Include="Content\less\icons\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\less\icons\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\less\icons\font-awesome\less\icons.less" />
+    <Content Include="Content\less\icons\font-awesome\less\larger.less" />
+    <Content Include="Content\less\icons\font-awesome\less\list.less" />
+    <Content Include="Content\less\icons\font-awesome\less\mixins.less" />
+    <Content Include="Content\less\icons\font-awesome\less\path.less" />
+    <Content Include="Content\less\icons\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\less\icons\font-awesome\less\spinning.less" />
+    <Content Include="Content\less\icons\font-awesome\less\stacked.less" />
+    <Content Include="Content\less\icons\font-awesome\less\variables.less" />
+    <Content Include="Content\less\icons\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_animated.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_core.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_extras.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_list.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_path.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_spinning.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\less\icons\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-arrows-10.eot" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-arrows-10.ttf" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-arrows-10.woff" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-basic-10.eot" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-basic-10.ttf" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-basic-10.woff" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-basic-elaboration-10.eot" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-basic-elaboration-10.ttf" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-basic-elaboration-10.woff" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-ecommerce-10.eot" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-ecommerce-10.ttf" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-ecommerce-10.woff" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-music-10.eot" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-music-10.ttf" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-music-10.woff" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-software-10.eot" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-software-10.ttf" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-software-10.woff" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-weather-10.eot" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-weather-10.ttf" />
+    <Content Include="Content\less\icons\linea-icons\fonts\linea-weather-10.woff" />
+    <Content Include="Content\less\icons\linea-icons\linea.less" />
+    <Content Include="Content\less\icons\simple-line-icons\fonts\Simple-Line-Icons.eot" />
+    <Content Include="Content\less\icons\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Content\less\icons\simple-line-icons\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Content\less\icons\simple-line-icons\fonts\Simple-Line-Icons.woff2" />
+    <Content Include="Content\less\icons\simple-line-icons\less\simple-line-icons.less" />
+    <Content Include="Content\less\icons\simple-line-icons\scss\simple-line-icons.scss" />
+    <Content Include="Content\less\icons\themify-icons\fonts\themify.eot" />
+    <Content Include="Content\less\icons\themify-icons\fonts\themify.ttf" />
+    <Content Include="Content\less\icons\themify-icons\fonts\themify.woff" />
+    <Content Include="Content\less\icons\themify-icons\themify-icons.less" />
+    <Content Include="Content\less\icons\weather-icons\font\weathericons-regular-webfont.eot" />
+    <Content Include="Content\less\icons\weather-icons\font\weathericons-regular-webfont.ttf" />
+    <Content Include="Content\less\icons\weather-icons\font\weathericons-regular-webfont.woff" />
+    <Content Include="Content\less\icons\weather-icons\font\weathericons-regular-webfont.woff2" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-beaufort.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-day.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-direction.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-misc.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-moon-aliases.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-moon.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-neutral.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-night.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-time.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-wind-aliases.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-wind-degrees.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-classes\classes-wind.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-variables\variables-beaufort.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-variables\variables-day.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-variables\variables-direction.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-variables\variables-misc.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-variables\variables-moon.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-variables\variables-neutral.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-variables\variables-night.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-variables\variables-time.less" />
+    <Content Include="Content\less\icons\weather-icons\less\icon-variables\variables-wind-names.less" />
+    <Content Include="Content\less\icons\weather-icons\less\mappings\wi-forecast-io.less" />
+    <Content Include="Content\less\icons\weather-icons\less\mappings\wi-owm.less" />
+    <Content Include="Content\less\icons\weather-icons\less\mappings\wi-wmo4680.less" />
+    <Content Include="Content\less\icons\weather-icons\less\mappings\wi-yahoo.less" />
+    <Content Include="Content\less\icons\weather-icons\less\weather-icons-classes.less" />
+    <Content Include="Content\less\icons\weather-icons\less\weather-icons-core.less" />
+    <Content Include="Content\less\icons\weather-icons\less\weather-icons-variables.less" />
+    <Content Include="Content\less\icons\weather-icons\less\weather-icons-wind.less" />
+    <Content Include="Content\less\icons\weather-icons\less\weather-icons-wind.min.less" />
+    <Content Include="Content\less\icons\weather-icons\less\weather-icons.less" />
+    <Content Include="Content\less\icons\weather-icons\less\weather-icons.min.less" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-beaufort.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-day.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-direction.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-misc.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-moon-aliases.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-moon.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-neutral.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-night.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-time.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-wind-aliases.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-wind-degrees.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-classes\classes-wind.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-variables\variables-beaufort.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-variables\variables-day.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-variables\variables-direction.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-variables\variables-misc.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-variables\variables-moon.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-variables\variables-neutral.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-variables\variables-night.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-variables\variables-time.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\icon-variables\variables-wind-names.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\mappings\wi-forecast-io.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\mappings\wi-owm.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\mappings\wi-wmo4680.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\mappings\wi-yahoo.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\weather-icons-classes.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\weather-icons-core.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\weather-icons-variables.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\weather-icons-wind.min.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\weather-icons-wind.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\weather-icons.min.scss" />
+    <Content Include="Content\less\icons\weather-icons\sass\weather-icons.scss" />
+    <Content Include="Content\less\pages.less" />
+    <Content Include="Content\less\responsive.less" />
+    <Content Include="Content\less\sidebar-nav.less" />
+    <Content Include="Content\less\style.less" />
+    <Content Include="Content\less\variables.less" />
+    <Content Include="Content\less\widgets.less" />
+    <Content Include="Content\DataTables\css\semanticui.scss" />
+    <Content Include="Content\DataTables\css\mixins.scss" />
+    <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Content\Documentation\bootstrap\CHANGELOG.md" />
+    <Content Include="Content\Documentation\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="Content\Documentation\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\Documentation\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="Content\Documentation\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="Content\Documentation\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Documentation\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Documentation\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Documentation\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Documentation\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Documentation\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Documentation\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Documentation\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Documentation\bootstrap\grunt\.jshintrc" />
+    <Content Include="Content\Documentation\bootstrap\grunt\configBridge.json" />
+    <Content Include="Content\Documentation\bootstrap\grunt\sauce_browsers.yml" />
+    <Content Include="Content\Documentation\bootstrap\less\alerts.less" />
+    <Content Include="Content\Documentation\bootstrap\less\badges.less" />
+    <Content Include="Content\Documentation\bootstrap\less\bootstrap.less" />
+    <Content Include="Content\Documentation\bootstrap\less\breadcrumbs.less" />
+    <Content Include="Content\Documentation\bootstrap\less\button-groups.less" />
+    <Content Include="Content\Documentation\bootstrap\less\buttons.less" />
+    <Content Include="Content\Documentation\bootstrap\less\carousel.less" />
+    <Content Include="Content\Documentation\bootstrap\less\close.less" />
+    <Content Include="Content\Documentation\bootstrap\less\code.less" />
+    <Content Include="Content\Documentation\bootstrap\less\component-animations.less" />
+    <Content Include="Content\Documentation\bootstrap\less\dropdowns.less" />
+    <Content Include="Content\Documentation\bootstrap\less\forms.less" />
+    <Content Include="Content\Documentation\bootstrap\less\glyphicons.less" />
+    <Content Include="Content\Documentation\bootstrap\less\grid.less" />
+    <Content Include="Content\Documentation\bootstrap\less\input-groups.less" />
+    <Content Include="Content\Documentation\bootstrap\less\jumbotron.less" />
+    <Content Include="Content\Documentation\bootstrap\less\labels.less" />
+    <Content Include="Content\Documentation\bootstrap\less\list-group.less" />
+    <Content Include="Content\Documentation\bootstrap\less\media.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\alerts.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\background-variant.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\border-radius.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\buttons.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\center-block.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\clearfix.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\forms.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\gradients.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\grid-framework.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\grid.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\hide-text.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\image.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\labels.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\list-group.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\nav-divider.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\nav-vertical-align.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\opacity.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\pagination.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\panels.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\progress-bar.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\reset-filter.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\reset-text.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\resize.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\responsive-visibility.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\size.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\tab-focus.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\table-row.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\text-emphasis.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\text-overflow.less" />
+    <Content Include="Content\Documentation\bootstrap\less\mixins\vendor-prefixes.less" />
+    <Content Include="Content\Documentation\bootstrap\less\modals.less" />
+    <Content Include="Content\Documentation\bootstrap\less\navbar.less" />
+    <Content Include="Content\Documentation\bootstrap\less\navs.less" />
+    <Content Include="Content\Documentation\bootstrap\less\normalize.less" />
+    <Content Include="Content\Documentation\bootstrap\less\pager.less" />
+    <Content Include="Content\Documentation\bootstrap\less\pagination.less" />
+    <Content Include="Content\Documentation\bootstrap\less\panels.less" />
+    <Content Include="Content\Documentation\bootstrap\less\popovers.less" />
+    <Content Include="Content\Documentation\bootstrap\less\print.less" />
+    <Content Include="Content\Documentation\bootstrap\less\progress-bars.less" />
+    <Content Include="Content\Documentation\bootstrap\less\responsive-embed.less" />
+    <Content Include="Content\Documentation\bootstrap\less\responsive-utilities.less" />
+    <Content Include="Content\Documentation\bootstrap\less\scaffolding.less" />
+    <Content Include="Content\Documentation\bootstrap\less\tables.less" />
+    <Content Include="Content\Documentation\bootstrap\less\theme.less" />
+    <Content Include="Content\Documentation\bootstrap\less\thumbnails.less" />
+    <Content Include="Content\Documentation\bootstrap\less\tooltip.less" />
+    <Content Include="Content\Documentation\bootstrap\less\type.less" />
+    <Content Include="Content\Documentation\bootstrap\less\utilities.less" />
+    <Content Include="Content\Documentation\bootstrap\less\variables.less" />
+    <Content Include="Content\Documentation\bootstrap\less\wells.less" />
+    <Content Include="Content\Documentation\bootstrap\LICENSE" />
+    <Content Include="Content\Documentation\bootstrap\package.json" />
+    <Content Include="Content\Documentation\bootstrap\README.md" />
+    <Content Include="Content\Documentation\less\colors\blue-dark.less" />
+    <Content Include="Content\Documentation\less\colors\blue.less" />
+    <Content Include="Content\Documentation\less\colors\default-dark.less" />
+    <Content Include="Content\Documentation\less\colors\default.less" />
+    <Content Include="Content\Documentation\less\colors\gray-dark.less" />
+    <Content Include="Content\Documentation\less\colors\gray.less" />
+    <Content Include="Content\Documentation\less\colors\green-dark.less" />
+    <Content Include="Content\Documentation\less\colors\green.less" />
+    <Content Include="Content\Documentation\less\colors\megna-dark.less" />
+    <Content Include="Content\Documentation\less\colors\megna.less" />
+    <Content Include="Content\Documentation\less\colors\purple-dark.less" />
+    <Content Include="Content\Documentation\less\colors\purple.less" />
+    <Content Include="Content\Documentation\less\eliteadmin.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\.bower.json" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\.gitignore" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\.npmignore" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\bower.json" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\fonts\fontawesome-webfont-old.ttf" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\animated.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\core.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\extras.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\icons.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\larger.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\list.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\mixins.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\path.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\spinning.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\stacked.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\less\variables.less" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_animated.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_core.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_extras.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_list.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_path.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_spinning.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\Documentation\less\icons\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-arrows-10.eot" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-arrows-10.ttf" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-arrows-10.woff" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-basic-10.eot" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-basic-10.ttf" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-basic-10.woff" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-basic-elaboration-10.eot" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-basic-elaboration-10.ttf" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-basic-elaboration-10.woff" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-ecommerce-10.eot" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-ecommerce-10.ttf" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-ecommerce-10.woff" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-music-10.eot" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-music-10.ttf" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-music-10.woff" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-software-10.eot" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-software-10.ttf" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-software-10.woff" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-weather-10.eot" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-weather-10.ttf" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\fonts\linea-weather-10.woff" />
+    <Content Include="Content\Documentation\less\icons\linea-icons\linea.less" />
+    <Content Include="Content\Documentation\less\icons\simple-line-icons\fonts\Simple-Line-Icons.eot" />
+    <Content Include="Content\Documentation\less\icons\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Content\Documentation\less\icons\simple-line-icons\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Content\Documentation\less\icons\simple-line-icons\fonts\Simple-Line-Icons.woff2" />
+    <Content Include="Content\Documentation\less\icons\simple-line-icons\less\simple-line-icons.less" />
+    <Content Include="Content\Documentation\less\icons\simple-line-icons\scss\simple-line-icons.scss" />
+    <Content Include="Content\Documentation\less\icons\themify-icons\fonts\themify.eot" />
+    <Content Include="Content\Documentation\less\icons\themify-icons\fonts\themify.ttf" />
+    <Content Include="Content\Documentation\less\icons\themify-icons\fonts\themify.woff" />
+    <Content Include="Content\Documentation\less\icons\themify-icons\themify-icons.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\font\weathericons-regular-webfont.eot" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\font\weathericons-regular-webfont.ttf" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\font\weathericons-regular-webfont.woff" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\font\weathericons-regular-webfont.woff2" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-beaufort.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-day.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-direction.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-misc.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-moon-aliases.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-moon.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-neutral.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-night.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-time.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-wind-aliases.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-wind-degrees.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-classes\classes-wind.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-variables\variables-beaufort.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-variables\variables-day.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-variables\variables-direction.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-variables\variables-misc.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-variables\variables-moon.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-variables\variables-neutral.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-variables\variables-night.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-variables\variables-time.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\icon-variables\variables-wind-names.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\mappings\wi-forecast-io.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\mappings\wi-owm.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\mappings\wi-wmo4680.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\mappings\wi-yahoo.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\weather-icons-classes.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\weather-icons-core.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\weather-icons-variables.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\weather-icons-wind.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\weather-icons-wind.min.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\weather-icons.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\less\weather-icons.min.less" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-beaufort.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-day.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-direction.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-misc.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-moon-aliases.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-moon.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-neutral.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-night.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-time.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-wind-aliases.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-wind-degrees.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-classes\classes-wind.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-variables\variables-beaufort.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-variables\variables-day.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-variables\variables-direction.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-variables\variables-misc.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-variables\variables-moon.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-variables\variables-neutral.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-variables\variables-night.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-variables\variables-time.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\icon-variables\variables-wind-names.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\mappings\wi-forecast-io.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\mappings\wi-owm.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\mappings\wi-wmo4680.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\mappings\wi-yahoo.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\weather-icons-classes.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\weather-icons-core.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\weather-icons-variables.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\weather-icons-wind.min.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\weather-icons-wind.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\weather-icons.min.scss" />
+    <Content Include="Content\Documentation\less\icons\weather-icons\sass\weather-icons.scss" />
+    <Content Include="Content\Documentation\less\responsive.less" />
+    <Content Include="Content\Documentation\less\sidebar-nav.less" />
+    <Content Include="Content\Documentation\less\style.less" />
+    <Content Include="Content\Documentation\less\variables.less" />
+    <Content Include="Content\Documentation\less\widgets.less" />
+    <Content Include="Content\Documentation\prepros.cfg" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Muayene\Index.cshtml" />
+    <Content Include="Views\Muayene\Ekle.cshtml" />
+    <Content Include="Views\Hasta\Index.cshtml" />
+    <Content Include="Views\Hasta\Ekle.cshtml" />
+    <Content Include="Views\Login\UyeOl.cshtml" />
+    <Content Include="Views\Login\Vatandas.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Shared\_PartialMenuBar.cshtml" />
+    <Content Include="Views\Shared\_PartialHead.cshtml" />
+    <Content Include="Views\Shared\_PartialScripts.cshtml" />
+    <Content Include="Views\Shared\_PartialNavBar.cshtml" />
+    <Content Include="Views\Shared\_PartialMessage.cshtml" />
+    <Content Include="Views\Shared\_PartialLogin.cshtml" />
+    <Content Include="Views\Vatandas\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Randevu\Index.cshtml" />
+    <Content Include="Views\Hasta\Bilgiler.cshtml" />
+    <Content Include="Views\Muayene\Detay.cshtml" />
+    <Content Include="Views\Muayene\Bilgi.cshtml" />
+    <Content Include="Views\Personel\Index.cshtml" />
+    <Content Include="Views\Personel\Detay.cshtml" />
+    <Content Include="Views\Personel\Ekle.cshtml" />
+    <Content Include="Views\Personel\Cikar.cshtml" />
+    <Content Include="Views\Poliklinik\Index.cshtml" />
+    <Content Include="Views\Poliklinik\Detay.cshtml" />
+    <Content Include="Views\Poliklinik\Ekle.cshtml" />
+    <Content Include="Views\Personel\Bilgiler.cshtml" />
+    <Content Include="Views\Personel\Iletisim.cshtml" />
+    <Content Include="Views\Poliklinik\Guncelle.cshtml" />
+    <Content Include="Views\Hasta\Guncelle.cshtml" />
+    <Content Include="Views\Profil\KimlikBilgileri.cshtml" />
+    <Content Include="Views\Profil\IletisimBilgileri.cshtml" />
+    <Content Include="Views\Profil\ParolaIslemleri.cshtml" />
+    <Content Include="Views\Randevu\Detay.cshtml" />
+    <Content Include="Views\Randevu\Bilgi.cshtml" />
+    <Content Include="Views\Randevu\Ekle.cshtml" />
+    <Content Include="Views\Tahlil\Index.cshtml" />
+    <Content Include="Views\Tahlil\Bilgiler.cshtml" />
+    <Content Include="Views\Tahlil\Sonuc.cshtml" />
+    <Content Include="Views\Ameliyat\Index.cshtml" />
+    <Content Include="Views\Ameliyat\Detay.cshtml" />
+    <Content Include="Views\Randevu\Gecmis.cshtml" />
+    <Content Include="Views\Tahlil\Islem.cshtml" />
+    <Content Include="Views\Tahlil\Ekle.cshtml" />
+    <Content Include="Views\Personel\Gecmis.cshtml" />
+    <Content Include="Views\Tahlil\Guncelle.cshtml" />
+    <Content Include="Views\Ameliyat\Ekle.cshtml" />
+    <Content Include="Views\Ameliyat\Liste.cshtml" />
+    <Content Include="Views\Vatandas\RandevuAl.cshtml" />
+    <Content Include="Views\Shared\PersonelGetir.cshtml" />
+    <Content Include="Views\Shared\RandevuGetir.cshtml" />
+    <Content Include="Views\Hasta\Rapor.cshtml" />
+    <Content Include="Views\Hasta\RaporEkle.cshtml" />
+    <Content Include="Views\Tahlil\Toplam.cshtml" />
+    <Content Include="Views\Poliklinik\Sil.cshtml" />
+    <Content Include="Views\Personel\TumPersoneller.cshtml" />
+    <Content Include="Views\Poliklinik\Gecmis.cshtml" />
+    <Content Include="Views\Poliklinik\TumPoliklinikler.cshtml" />
+    <Content Include="Views\Muayene\Gecmis.cshtml" />
+    <Content Include="Views\Muayene\Islem.cshtml" />
+    <Content Include="Views\Ameliyat\Ekip.cshtml" />
+    <Content Include="Views\Ameliyat\Kadro.cshtml" />
+    <Content Include="Views\Ameliyat\Oda.cshtml" />
+    <Content Include="Views\AmeliyatOda\Index.cshtml" />
+    <Content Include="Views\AmeliyatOda\Ekle.cshtml" />
+    <Content Include="Views\AmeliyatOda\Guncelle.cshtml" />
+    <Content Include="Views\AmeliyatOda\Sil.cshtml" />
+    <Content Include="Views\AmeliyatEkip\Index.cshtml" />
+    <Content Include="Views\AmeliyatEkip\Guncelle.cshtml" />
+    <Content Include="Views\AmeliyatEkip\Ekle.cshtml" />
+    <Content Include="Views\AmeliyatEkip\Sil.cshtml" />
+    <Content Include="Views\AmeliyatEkip\Kadro.cshtml" />
+    <Content Include="Views\AmeliyatEkip\PersonelEkle.cshtml" />
+    <Content Include="Views\Vatandas\IletisimBilgileri.cshtml" />
+    <Content Include="Views\Vatandas\KimlikBilgileri.cshtml" />
+    <Content Include="Views\Vatandas\ParolaIslemleri.cshtml" />
+    <Content Include="Views\Ameliyat\Sonuc.cshtml" />
+    <Content Include="Views\Ameliyat\SonucEkle.cshtml" />
+    <Content Include="Views\AmeliyatOda\Gecmis.cshtml" />
+    <Content Include="Views\AmeliyatOda\TumAmeliyatOdalari.cshtml" />
+    <Content Include="Views\AmeliyatOda\Detaylar.cshtml" />
+    <Content Include="Views\Personel\Guncelle.cshtml" />
+    <Content Include="Views\HastaneOda\Index.cshtml" />
+    <Content Include="Views\HastaneOda\Detaylar.cshtml" />
+    <Content Include="Views\HastaneOda\Ekle.cshtml" />
+    <Content Include="Views\HastaneOda\Sil.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63316</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44316/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

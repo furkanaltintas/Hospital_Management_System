@@ -1,0 +1,69 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.hasta
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+<script>
+    $(function () {
+        $('#datetimepicker').datepicker();
+    });
+</script>
+
+@using (Html.BeginForm("UyeOl", "Login", FormMethod.Post))
+{
+
+    <h3 class="box-title m-b-20">Üye Ol</h3>
+    <div>
+        @Html.LabelFor(model => model.TCKimlikNo, "T.C Kimlik Numarası")
+        @Html.TextBoxFor(model => model.TCKimlikNo, new { @class = "form-control", @maxLength = "11" })
+        @Html.ValidationMessageFor(model => model.TCKimlikNo, "", new { @class = "text-danger" })
+        <br /><br />
+        @Html.LabelFor(model => model.adi, "Adı")
+        @Html.TextBoxFor(model => model.adi, new { @class = "form-control", @maxLength = "45" })
+        @Html.ValidationMessageFor(model => model.adi, "", new { @class = "text-danger" })
+        <br /><br />
+        @Html.LabelFor(model => model.soyadi, "Soyadı")
+        @Html.TextBoxFor(model => model.soyadi, new { @class = "form-control", @maxLength = "45" })
+        @Html.ValidationMessageFor(model => model.soyadi, "", new { @class = "text-danger" })
+        <br /><br />
+        @Html.DropDownListFor(m => m.cinsiyet, new List<SelectListItem>
+       { new SelectListItem{Text="Erkek", Value="True"},
+         new SelectListItem{Text="Kadın", Value="False"}}, "Cinsiyet Seçiniz", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.cinsiyet, "", new { @class = "text-danger" })
+        <br /><br />
+        @Html.LabelFor(model => model.dogumTarihi, "Doğum Tarihi")
+        @Html.TextBoxFor(model => model.dogumTarihi, new { @class = "form-control datetimepicker" })
+        @Html.ValidationMessageFor(model => model.dogumTarihi, "", new { @class = "text-danger" })
+        <br /><br />
+        @Html.LabelFor(model => model.sifre, "Şifre")
+        @Html.PasswordFor(model => model.sifre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.sifre, "", new { @class = "text-danger", @minLenght = "5", @maxLenght = "45" })
+        <br /><br />
+        <h5>@ViewBag.Hata</h5>
+        <button type="submit" class="btn btn-success" style="margin-top: 10px;">İleri</button>
+        <br />
+    </div>
+}
+
+<script src="~/Scripts/cleave.js"></script>
+<script src="~/Scripts/cleave-phone.i18n.js"></script>
+
+<script>
+    var cleave = new Cleave('#input-phone', {
+        phone: true,
+        phoneRegionCode: 'TR'
+    });
+
+    $('#select-country').change(function () {
+        cleave.setPhoneRegionCode(this.value);
+        cleave.setRawValue('');
+    });
+</script>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<script src="~/Scripts/CustomScript.js"></script>

@@ -1,0 +1,50 @@
+﻿@using HastaneProgrami.Models.Entity_Framework
+@model List<poliklinik>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <table id="tblhasta" class="table table-bordered table-hover text-center">
+
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-danger" style="background: #fb7878; border-color: #fb7878;" role="alert">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                Poliklinik bulunmamaktadır
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                @Model.Count() adet poliklinik bulunmaktadır
+            </div>
+            <thead>
+                <tr>
+                    <th class="text-center">POLİKLİNİK AD</th>
+                    <th class="text-center">POLİKLİNİK AÇILIŞ TARİHİ</th>
+                    <th class="text-center">GÜNCELLE</th>
+                    <th class="text-center">DETAY</th>
+                    <th class="text-center">SİL</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.ad.ToUpper()</td>
+                        <td>@x.tarih</td>
+                        <td><a href="/Poliklinik/Guncelle/@x.poliklinikID" class="btn btn-success">GÜNCELLE</a></td>
+                        <td><a href="/Poliklinik/Detay/@x.poliklinikID" class="btn btn-twitter">DETAYLAR</a></td>
+                        <td><a href="/Poliklinik/Sil/@x.poliklinikID" class="btn btn-googleplus">SİL</a></td>
+                    </tr>
+                }
+            </tbody>
+        }
+    </table>
+</div>
+
+<a href="/Poliklinik/Ekle" class="btn btn-primary">YENİ POLİKLİNİK EKLE</a>
+

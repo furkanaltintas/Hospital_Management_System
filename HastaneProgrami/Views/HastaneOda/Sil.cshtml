@@ -1,0 +1,43 @@
+﻿@using HastaneProgrami.Models.Entity_Framework
+@model List<ameliyatSonuc>
+
+@{
+    ViewBag.Title = "AMELİYAT ÇIKIŞ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+
+        <table id="tblhasta" class="table table-bordered table-hover text-center">
+
+            <h4>HASTANE ODA ÇIKIŞINI ONAYLIYOR MUSUNUZ ?</h4>
+            <hr />
+
+            <thead>
+                <tr>
+                    <th class="text-center">PERSONEL ADI SOYADI</th>
+                    <th class="text-center">AMELİYAT BİTİŞ TARİHİ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ameliyat.hasta.adi.ToUpper() @item.ameliyat.hasta.soyadi.ToUpper()</td>
+                        <td>@item.ameliyatBitisTarih</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <a href="@Url.Action("Index","HastaneOda")" class="btn btn-facebook">Geriye Dön</a>
+        <button class="btn btn-googleplus">EVET</button>
+    </div>
+}
+
+

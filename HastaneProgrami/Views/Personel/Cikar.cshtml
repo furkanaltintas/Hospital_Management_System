@@ -1,0 +1,75 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.personel
+
+@{
+    ViewBag.Title = "Poliklinik Sil";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.adi, "ADI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                @Html.TextBoxFor(model => model.adi, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.adi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.soyadi, "SOYADI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                @Html.TextBoxFor(model => model.soyadi, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.soyadi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.poliklinik.ad, "POLİKLİNİK ADI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-university"></i></div>
+                @Html.TextBoxFor(model => model.poliklinik.ad, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.poliklinik.ad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.yetki.yetkiAd, "PERSONEL UNVAN")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
+                @Html.TextBoxFor(model => model.yetki.yetkiAd, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.yetki.yetkiAd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TCKimlikNo, "PERSONEL T.C KİMLİK NO")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-certificate"></i></div>
+                @Html.TextBoxFor(model => model.TCKimlikNo, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.TCKimlikNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, "PERSONEL MAIL")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                @Html.TextBoxFor(model => model.email, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href="@Url.Action("Index","Personel")" class="btn btn-facebook">Geriye Dön</a>
+            <button class="btn btn-pinterest">PERSONEL ÇIKAR</button>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,2318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HastaneOtomasyon.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ameliyat">
+          <Key>
+            <PropertyRef Name="ameliyatID" />
+          </Key>
+          <Property Name="ameliyatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bolumID" Type="int" />
+          <Property Name="hastaID" Type="int" />
+          <Property Name="hastaBilgiID" Type="int" />
+          <Property Name="tahlilID" Type="int" />
+          <Property Name="ameliyatOdasiID" Type="int" />
+          <Property Name="ameliyatEkibiID" Type="int" />
+          <Property Name="onay" Type="bit" />
+          <Property Name="belge" Type="nvarchar" MaxLength="250" />
+          <Property Name="ad" Type="nvarchar" MaxLength="100" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="100" />
+          <Property Name="ameliyatBaslangicTarih" Type="date" />
+          <Property Name="ameliyatBaslangicSaati" Type="time" Precision="7" />
+          <Property Name="onayTarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ameliyatEkip">
+          <Key>
+            <PropertyRef Name="ameliyatEkipID" />
+          </Key>
+          <Property Name="ameliyatEkipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="ekipDurum" Type="bit" />
+          <Property Name="durum" Type="bit" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ameliyatKadro">
+          <Key>
+            <PropertyRef Name="ameliyatKadroID" />
+          </Key>
+          <Property Name="ameliyatKadroID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ameliyatEkipID" Type="int" />
+          <Property Name="personelID" Type="int" />
+          <Property Name="durum" Type="bit" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ameliyatOdasi">
+          <Key>
+            <PropertyRef Name="ameliyatOdasiID" />
+          </Key>
+          <Property Name="ameliyatOdasiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="20" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="odaDurum" Type="bit" />
+          <Property Name="durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="ameliyatSonuc">
+          <Key>
+            <PropertyRef Name="ameliyatSonucID" />
+          </Key>
+          <Property Name="ameliyatSonucID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ameliyatID" Type="int" />
+          <Property Name="hastaneOdaID" Type="int" />
+          <Property Name="ameliyatDurum" Type="bit" />
+          <Property Name="hastaDurum" Type="bit" />
+          <Property Name="durum" Type="bit" />
+          <Property Name="ameliyatBitisTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="bolum">
+          <Key>
+            <PropertyRef Name="bolumID" />
+          </Key>
+          <Property Name="bolumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ELMAH_Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Application" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Source" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+          <Property Name="TimeUtc" Type="datetime" Nullable="false" />
+          <Property Name="Sequence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AllXml" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hasta">
+          <Key>
+            <PropertyRef Name="hastaID" />
+          </Key>
+          <Property Name="hastaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vatandasYetkiID" Type="int" />
+          <Property Name="kanGrubuID" Type="int" />
+          <Property Name="TCKimlikNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="rsifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dogumTarihi" Type="date" Nullable="false" />
+          <Property Name="adres" Type="nvarchar" MaxLength="250" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="cinsiyet" Type="bit" Nullable="false" />
+          <Property Name="medeniHali" Type="bit" />
+          <Property Name="meslek" Type="nvarchar" MaxLength="50" />
+          <Property Name="kayitTarihi" Type="datetime" />
+          <Property Name="cepTel" Type="nvarchar" MaxLength="20" />
+          <Property Name="evTel" Type="nvarchar" MaxLength="20" />
+          <Property Name="isTel" Type="nvarchar" MaxLength="20" />
+          <Property Name="dogumYeri" Type="nvarchar" MaxLength="50" />
+          <Property Name="sicilNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="sgk" Type="nvarchar" MaxLength="50" />
+          <Property Name="il" Type="nvarchar" MaxLength="50" />
+          <Property Name="ilce" Type="nvarchar" MaxLength="50" />
+          <Property Name="anne" Type="nvarchar" MaxLength="50" />
+          <Property Name="baba" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hastaBilgi">
+          <Key>
+            <PropertyRef Name="hastaBilgiID" />
+          </Key>
+          <Property Name="hastaBilgiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hastaID" Type="int" Nullable="false" />
+          <Property Name="alerjiler" Type="nvarchar" MaxLength="50" />
+          <Property Name="ilaclar" Type="nvarchar" MaxLength="50" />
+          <Property Name="hastalık" Type="nvarchar" MaxLength="50" />
+          <Property Name="ameliyat" Type="nvarchar" MaxLength="50" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="aciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="hastaneOda">
+          <Key>
+            <PropertyRef Name="hastaneOdaID" />
+          </Key>
+          <Property Name="hastaneOdaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="25" />
+          <Property Name="durum" Type="bit" />
+          <Property Name="baslangic" Type="int" />
+          <Property Name="bitis" Type="int" />
+        </EntityType>
+        <EntityType Name="hastaSikayet">
+          <Key>
+            <PropertyRef Name="hastaSikayetID" />
+          </Key>
+          <Property Name="hastaSikayetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="idrarTup">
+          <Key>
+            <PropertyRef Name="idrarTupID" />
+          </Key>
+          <Property Name="idrarTupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="turu" Type="nvarchar" MaxLength="50" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="kanGrubu">
+          <Key>
+            <PropertyRef Name="kanGrubuID" />
+          </Key>
+          <Property Name="kanGrubuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kanGrubuAdi" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="kanTup">
+          <Key>
+            <PropertyRef Name="kanTupID" />
+          </Key>
+          <Property Name="kanTupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="turu" Type="nvarchar" MaxLength="50" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="kullanici">
+          <Key>
+            <PropertyRef Name="kullaniciID" />
+          </Key>
+          <Property Name="kullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personelID" Type="int" Nullable="false" />
+          <Property Name="yetkiID" Type="int" Nullable="false" />
+          <Property Name="adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="muayene">
+          <Key>
+            <PropertyRef Name="muayeneID" />
+          </Key>
+          <Property Name="muayeneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hastaID" Type="int" Nullable="false" />
+          <Property Name="personelID" Type="int" Nullable="false" />
+          <Property Name="randevuID" Type="int" Nullable="false" />
+          <Property Name="tahlilID" Type="int" />
+          <Property Name="baslik" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="tarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="muayeneSonuc">
+          <Key>
+            <PropertyRef Name="muayeneSonucID" />
+          </Key>
+          <Property Name="muayeneSonucID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="muayeneID" Type="int" Nullable="false" />
+          <Property Name="aciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="personel">
+          <Key>
+            <PropertyRef Name="personelID" />
+          </Key>
+          <Property Name="personelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bolumID" Type="int" />
+          <Property Name="poliklinikID" Type="int" />
+          <Property Name="yetkiID" Type="int" Nullable="false" />
+          <Property Name="kanGrubuID" Type="int" Nullable="false" />
+          <Property Name="durum" Type="bit" />
+          <Property Name="avatar" Type="nvarchar" MaxLength="250" />
+          <Property Name="adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cinsiyet" Type="bit" />
+          <Property Name="medeniHali" Type="bit" />
+          <Property Name="adres" Type="nvarchar" MaxLength="250" />
+          <Property Name="cepTel" Type="varchar" MaxLength="20" />
+          <Property Name="evTel" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="sifre" Type="varchar" MaxLength="50" />
+          <Property Name="rsifre" Type="varchar" MaxLength="50" />
+          <Property Name="dogumYeri" Type="nvarchar" MaxLength="50" />
+          <Property Name="dogumTarihi" Type="date" Nullable="false" />
+          <Property Name="TCKimlikNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="sicilNo" Type="int" />
+          <Property Name="diplomaNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kayitTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="poliklinik">
+          <Key>
+            <PropertyRef Name="poliklinikID" />
+          </Key>
+          <Property Name="poliklinikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bolumID" Type="int" />
+          <Property Name="ad" Type="varchar" MaxLength="50" />
+          <Property Name="durum" Type="bit" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="randevu">
+          <Key>
+            <PropertyRef Name="randevuID" />
+          </Key>
+          <Property Name="randevuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personelID" Type="int" Nullable="false" />
+          <Property Name="hastaID" Type="int" Nullable="false" />
+          <Property Name="poliklinikID" Type="int" Nullable="false" />
+          <Property Name="randevuSaatID" Type="int" Nullable="false" />
+          <Property Name="tarih" Type="date" />
+          <Property Name="saat" Type="time" Precision="7" />
+          <Property Name="kayitTarihi" Type="datetime" />
+          <Property Name="durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="randevuSaat">
+          <Key>
+            <PropertyRef Name="randevuSaatID" />
+          </Key>
+          <Property Name="randevuSaatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nchar" MaxLength="10" />
+          <Property Name="dolumOrani" Type="int" />
+          <Property Name="dolumBaslangic" Type="int" />
+          <Property Name="dolumPasif" Type="bit" />
+        </EntityType>
+        <EntityType Name="recete">
+          <Key>
+            <PropertyRef Name="receteID" />
+          </Key>
+          <Property Name="receteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personelID" Type="int" Nullable="false" />
+          <Property Name="hastaID" Type="int" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="receteBilgi">
+          <Key>
+            <PropertyRef Name="receteBilgiID" />
+          </Key>
+          <Property Name="receteBilgiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="receteID" Type="int" Nullable="false" />
+          <Property Name="barkodNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="doz" Type="nvarchar" MaxLength="50" />
+          <Property Name="adet" Type="nvarchar" MaxLength="50" />
+          <Property Name="kullanımSekli" Type="nvarchar" MaxLength="50" />
+          <Property Name="fiyat" Type="nvarchar" MaxLength="50" />
+          <Property Name="toplam" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tahlil">
+          <Key>
+            <PropertyRef Name="tahlilID" />
+          </Key>
+          <Property Name="tahlilID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personelID" Type="int" Nullable="false" />
+          <Property Name="hastaID" Type="int" Nullable="false" />
+          <Property Name="kanTupID" Type="int" />
+          <Property Name="idrarTupID" Type="int" />
+          <Property Name="sonuc" Type="nvarchar" MaxLength="50" />
+          <Property Name="durum" Type="nvarchar" MaxLength="50" />
+          <Property Name="miktar" Type="nvarchar" MaxLength="50" />
+          <Property Name="aciklama" Type="nvarchar(max)" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="unvan">
+          <Key>
+            <PropertyRef Name="unvanID" />
+          </Key>
+          <Property Name="unvanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="türü" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="vatandasYetki">
+          <Key>
+            <PropertyRef Name="vatandasYetkiID" />
+          </Key>
+          <Property Name="vatandasYetkiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="20" />
+          <Property Name="durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="yetki">
+          <Key>
+            <PropertyRef Name="yetkiID" />
+          </Key>
+          <Property Name="yetkiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yetkiAd" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_ameliyat_ameliyatEkip">
+          <End Role="ameliyatEkip" Type="Self.ameliyatEkip" Multiplicity="0..1" />
+          <End Role="ameliyat" Type="Self.ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ameliyatEkip">
+              <PropertyRef Name="ameliyatEkipID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="ameliyatEkibiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyat_ameliyatOdasi">
+          <End Role="ameliyatOdasi" Type="Self.ameliyatOdasi" Multiplicity="0..1" />
+          <End Role="ameliyat" Type="Self.ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ameliyatOdasi">
+              <PropertyRef Name="ameliyatOdasiID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="ameliyatOdasiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyat_bolum">
+          <End Role="bolum" Type="Self.bolum" Multiplicity="0..1" />
+          <End Role="ameliyat" Type="Self.ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolum">
+              <PropertyRef Name="bolumID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="bolumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyat_hasta">
+          <End Role="hasta" Type="Self.hasta" Multiplicity="0..1" />
+          <End Role="ameliyat" Type="Self.ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyat_hastaBilgi">
+          <End Role="hastaBilgi" Type="Self.hastaBilgi" Multiplicity="0..1" />
+          <End Role="ameliyat" Type="Self.ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hastaBilgi">
+              <PropertyRef Name="hastaBilgiID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="hastaBilgiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyat_tahlil">
+          <End Role="tahlil" Type="Self.tahlil" Multiplicity="0..1" />
+          <End Role="ameliyat" Type="Self.ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tahlil">
+              <PropertyRef Name="tahlilID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="tahlilID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyatKadrosu_ameliyatEkip">
+          <End Role="ameliyatEkip" Type="Self.ameliyatEkip" Multiplicity="0..1" />
+          <End Role="ameliyatKadro" Type="Self.ameliyatKadro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ameliyatEkip">
+              <PropertyRef Name="ameliyatEkipID" />
+            </Principal>
+            <Dependent Role="ameliyatKadro">
+              <PropertyRef Name="ameliyatEkipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyatKadrosu_personel">
+          <End Role="personel" Type="Self.personel" Multiplicity="0..1" />
+          <End Role="ameliyatKadro" Type="Self.ameliyatKadro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="ameliyatKadro">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyatSonuc_ameliyat">
+          <End Role="ameliyat" Type="Self.ameliyat" Multiplicity="0..1" />
+          <End Role="ameliyatSonuc" Type="Self.ameliyatSonuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ameliyat">
+              <PropertyRef Name="ameliyatID" />
+            </Principal>
+            <Dependent Role="ameliyatSonuc">
+              <PropertyRef Name="ameliyatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyatSonuc_hastaneOda">
+          <End Role="hastaneOda" Type="Self.hastaneOda" Multiplicity="0..1" />
+          <End Role="ameliyatSonuc" Type="Self.ameliyatSonuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hastaneOda">
+              <PropertyRef Name="hastaneOdaID" />
+            </Principal>
+            <Dependent Role="ameliyatSonuc">
+              <PropertyRef Name="hastaneOdaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hasta_kanGrubu">
+          <End Role="kanGrubu" Type="Self.kanGrubu" Multiplicity="0..1" />
+          <End Role="hasta" Type="Self.hasta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kanGrubu">
+              <PropertyRef Name="kanGrubuID" />
+            </Principal>
+            <Dependent Role="hasta">
+              <PropertyRef Name="kanGrubuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hasta_vatandasYetki">
+          <End Role="vatandasYetki" Type="Self.vatandasYetki" Multiplicity="0..1" />
+          <End Role="hasta" Type="Self.hasta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vatandasYetki">
+              <PropertyRef Name="vatandasYetkiID" />
+            </Principal>
+            <Dependent Role="hasta">
+              <PropertyRef Name="vatandasYetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hastaBilgi_hasta">
+          <End Role="hasta" Type="Self.hasta" Multiplicity="1" />
+          <End Role="hastaBilgi" Type="Self.hastaBilgi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="hastaBilgi">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kullanici_personel">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="kullanici" Type="Self.kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="kullanici">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kullanici_yetki">
+          <End Role="yetki" Type="Self.yetki" Multiplicity="1" />
+          <End Role="kullanici" Type="Self.kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="yetki">
+              <PropertyRef Name="yetkiID" />
+            </Principal>
+            <Dependent Role="kullanici">
+              <PropertyRef Name="yetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_muayene_hasta">
+          <End Role="hasta" Type="Self.hasta" Multiplicity="1" />
+          <End Role="muayene" Type="Self.muayene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="muayene">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_muayene_personel">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="muayene" Type="Self.muayene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="muayene">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_muayene_randevu">
+          <End Role="randevu" Type="Self.randevu" Multiplicity="1" />
+          <End Role="muayene" Type="Self.muayene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="randevu">
+              <PropertyRef Name="randevuID" />
+            </Principal>
+            <Dependent Role="muayene">
+              <PropertyRef Name="randevuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_muayene_tahlilDurum">
+          <End Role="tahlil" Type="Self.tahlil" Multiplicity="0..1" />
+          <End Role="muayene" Type="Self.muayene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tahlil">
+              <PropertyRef Name="tahlilID" />
+            </Principal>
+            <Dependent Role="muayene">
+              <PropertyRef Name="tahlilID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_bolum">
+          <End Role="bolum" Type="Self.bolum" Multiplicity="0..1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolum">
+              <PropertyRef Name="bolumID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="bolumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_kanGrubu">
+          <End Role="kanGrubu" Type="Self.kanGrubu" Multiplicity="1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kanGrubu">
+              <PropertyRef Name="kanGrubuID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="kanGrubuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_poliklinik">
+          <End Role="poliklinik" Type="Self.poliklinik" Multiplicity="0..1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="poliklinik">
+              <PropertyRef Name="poliklinikID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="poliklinikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_yetki">
+          <End Role="yetki" Type="Self.yetki" Multiplicity="1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="yetki">
+              <PropertyRef Name="yetkiID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="yetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_poliklinik_bolum">
+          <End Role="bolum" Type="Self.bolum" Multiplicity="0..1" />
+          <End Role="poliklinik" Type="Self.poliklinik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolum">
+              <PropertyRef Name="bolumID" />
+            </Principal>
+            <Dependent Role="poliklinik">
+              <PropertyRef Name="bolumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_randevu_hasta">
+          <End Role="hasta" Type="Self.hasta" Multiplicity="1" />
+          <End Role="randevu" Type="Self.randevu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="randevu">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_randevu_personel">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="randevu" Type="Self.randevu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="randevu">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_randevu_poliklinik">
+          <End Role="poliklinik" Type="Self.poliklinik" Multiplicity="1" />
+          <End Role="randevu" Type="Self.randevu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="poliklinik">
+              <PropertyRef Name="poliklinikID" />
+            </Principal>
+            <Dependent Role="randevu">
+              <PropertyRef Name="poliklinikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_randevu_randevuSaat">
+          <End Role="randevuSaat" Type="Self.randevuSaat" Multiplicity="1" />
+          <End Role="randevu" Type="Self.randevu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="randevuSaat">
+              <PropertyRef Name="randevuSaatID" />
+            </Principal>
+            <Dependent Role="randevu">
+              <PropertyRef Name="randevuSaatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_recete_hasta">
+          <End Role="hasta" Type="Self.hasta" Multiplicity="0..1" />
+          <End Role="recete" Type="Self.recete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="recete">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_recete_personel">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="recete" Type="Self.recete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="recete">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receteBilgi_recete">
+          <End Role="recete" Type="Self.recete" Multiplicity="1" />
+          <End Role="receteBilgi" Type="Self.receteBilgi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recete">
+              <PropertyRef Name="receteID" />
+            </Principal>
+            <Dependent Role="receteBilgi">
+              <PropertyRef Name="receteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tahlilDurum_hasta">
+          <End Role="hasta" Type="Self.hasta" Multiplicity="1" />
+          <End Role="tahlil" Type="Self.tahlil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="tahlil">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tahlilDurum_idrarTup">
+          <End Role="idrarTup" Type="Self.idrarTup" Multiplicity="0..1" />
+          <End Role="tahlil" Type="Self.tahlil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="idrarTup">
+              <PropertyRef Name="idrarTupID" />
+            </Principal>
+            <Dependent Role="tahlil">
+              <PropertyRef Name="idrarTupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tahlilDurum_kanTup">
+          <End Role="kanTup" Type="Self.kanTup" Multiplicity="0..1" />
+          <End Role="tahlil" Type="Self.tahlil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kanTup">
+              <PropertyRef Name="kanTupID" />
+            </Principal>
+            <Dependent Role="tahlil">
+              <PropertyRef Name="kanTupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tahlilDurum_personel">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="tahlil" Type="Self.tahlil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="tahlil">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HastaneOtomasyonStoreContainer">
+          <EntitySet Name="ameliyat" EntityType="Self.ameliyat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ameliyatEkip" EntityType="Self.ameliyatEkip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ameliyatKadro" EntityType="Self.ameliyatKadro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ameliyatOdasi" EntityType="Self.ameliyatOdasi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ameliyatSonuc" EntityType="Self.ameliyatSonuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bolum" EntityType="Self.bolum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ELMAH_Error" EntityType="Self.ELMAH_Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hasta" EntityType="Self.hasta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hastaBilgi" EntityType="Self.hastaBilgi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hastaneOda" EntityType="Self.hastaneOda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hastaSikayet" EntityType="Self.hastaSikayet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="idrarTup" EntityType="Self.idrarTup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kanGrubu" EntityType="Self.kanGrubu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kanTup" EntityType="Self.kanTup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kullanici" EntityType="Self.kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="muayene" EntityType="Self.muayene" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="muayeneSonuc" EntityType="Self.muayeneSonuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personel" EntityType="Self.personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="poliklinik" EntityType="Self.poliklinik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="randevu" EntityType="Self.randevu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="randevuSaat" EntityType="Self.randevuSaat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recete" EntityType="Self.recete" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="receteBilgi" EntityType="Self.receteBilgi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tahlil" EntityType="Self.tahlil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="unvan" EntityType="Self.unvan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vatandasYetki" EntityType="Self.vatandasYetki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yetki" EntityType="Self.yetki" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ameliyat_ameliyatEkip" Association="Self.FK_ameliyat_ameliyatEkip">
+            <End Role="ameliyatEkip" EntitySet="ameliyatEkip" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyat_ameliyatOdasi" Association="Self.FK_ameliyat_ameliyatOdasi">
+            <End Role="ameliyatOdasi" EntitySet="ameliyatOdasi" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyat_bolum" Association="Self.FK_ameliyat_bolum">
+            <End Role="bolum" EntitySet="bolum" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyat_hasta" Association="Self.FK_ameliyat_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyat_hastaBilgi" Association="Self.FK_ameliyat_hastaBilgi">
+            <End Role="hastaBilgi" EntitySet="hastaBilgi" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyat_tahlil" Association="Self.FK_ameliyat_tahlil">
+            <End Role="tahlil" EntitySet="tahlil" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyatKadrosu_ameliyatEkip" Association="Self.FK_ameliyatKadrosu_ameliyatEkip">
+            <End Role="ameliyatEkip" EntitySet="ameliyatEkip" />
+            <End Role="ameliyatKadro" EntitySet="ameliyatKadro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyatKadrosu_personel" Association="Self.FK_ameliyatKadrosu_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="ameliyatKadro" EntitySet="ameliyatKadro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyatSonuc_ameliyat" Association="Self.FK_ameliyatSonuc_ameliyat">
+            <End Role="ameliyat" EntitySet="ameliyat" />
+            <End Role="ameliyatSonuc" EntitySet="ameliyatSonuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyatSonuc_hastaneOda" Association="Self.FK_ameliyatSonuc_hastaneOda">
+            <End Role="hastaneOda" EntitySet="hastaneOda" />
+            <End Role="ameliyatSonuc" EntitySet="ameliyatSonuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hasta_kanGrubu" Association="Self.FK_hasta_kanGrubu">
+            <End Role="kanGrubu" EntitySet="kanGrubu" />
+            <End Role="hasta" EntitySet="hasta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hasta_vatandasYetki" Association="Self.FK_hasta_vatandasYetki">
+            <End Role="vatandasYetki" EntitySet="vatandasYetki" />
+            <End Role="hasta" EntitySet="hasta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hastaBilgi_hasta" Association="Self.FK_hastaBilgi_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="hastaBilgi" EntitySet="hastaBilgi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kullanici_personel" Association="Self.FK_kullanici_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="kullanici" EntitySet="kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kullanici_yetki" Association="Self.FK_kullanici_yetki">
+            <End Role="yetki" EntitySet="yetki" />
+            <End Role="kullanici" EntitySet="kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_muayene_hasta" Association="Self.FK_muayene_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="muayene" EntitySet="muayene" />
+          </AssociationSet>
+          <AssociationSet Name="FK_muayene_personel" Association="Self.FK_muayene_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="muayene" EntitySet="muayene" />
+          </AssociationSet>
+          <AssociationSet Name="FK_muayene_randevu" Association="Self.FK_muayene_randevu">
+            <End Role="randevu" EntitySet="randevu" />
+            <End Role="muayene" EntitySet="muayene" />
+          </AssociationSet>
+          <AssociationSet Name="FK_muayene_tahlilDurum" Association="Self.FK_muayene_tahlilDurum">
+            <End Role="tahlil" EntitySet="tahlil" />
+            <End Role="muayene" EntitySet="muayene" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_bolum" Association="Self.FK_personel_bolum">
+            <End Role="bolum" EntitySet="bolum" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_kanGrubu" Association="Self.FK_personel_kanGrubu">
+            <End Role="kanGrubu" EntitySet="kanGrubu" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_poliklinik" Association="Self.FK_personel_poliklinik">
+            <End Role="poliklinik" EntitySet="poliklinik" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_yetki" Association="Self.FK_personel_yetki">
+            <End Role="yetki" EntitySet="yetki" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_poliklinik_bolum" Association="Self.FK_poliklinik_bolum">
+            <End Role="bolum" EntitySet="bolum" />
+            <End Role="poliklinik" EntitySet="poliklinik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_randevu_hasta" Association="Self.FK_randevu_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="randevu" EntitySet="randevu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_randevu_personel" Association="Self.FK_randevu_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="randevu" EntitySet="randevu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_randevu_poliklinik" Association="Self.FK_randevu_poliklinik">
+            <End Role="poliklinik" EntitySet="poliklinik" />
+            <End Role="randevu" EntitySet="randevu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_randevu_randevuSaat" Association="Self.FK_randevu_randevuSaat">
+            <End Role="randevuSaat" EntitySet="randevuSaat" />
+            <End Role="randevu" EntitySet="randevu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_recete_hasta" Association="Self.FK_recete_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="recete" EntitySet="recete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_recete_personel" Association="Self.FK_recete_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="recete" EntitySet="recete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receteBilgi_recete" Association="Self.FK_receteBilgi_recete">
+            <End Role="recete" EntitySet="recete" />
+            <End Role="receteBilgi" EntitySet="receteBilgi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tahlilDurum_hasta" Association="Self.FK_tahlilDurum_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="tahlil" EntitySet="tahlil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tahlilDurum_idrarTup" Association="Self.FK_tahlilDurum_idrarTup">
+            <End Role="idrarTup" EntitySet="idrarTup" />
+            <End Role="tahlil" EntitySet="tahlil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tahlilDurum_kanTup" Association="Self.FK_tahlilDurum_kanTup">
+            <End Role="kanTup" EntitySet="kanTup" />
+            <End Role="tahlil" EntitySet="tahlil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tahlilDurum_personel" Association="Self.FK_tahlilDurum_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="tahlil" EntitySet="tahlil" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HastaneOtomasyon" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ELMAH_Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="Guid" Nullable="false" />
+          <Property Name="Application" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Source" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+          <Property Name="TimeUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AllXml" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hastaBilgi">
+          <Key>
+            <PropertyRef Name="hastaBilgiID" />
+          </Key>
+          <Property Name="hastaBilgiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hastaID" Type="Int32" Nullable="false" />
+          <Property Name="alerjiler" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilaclar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hastalık" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ameliyat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ameliyat1" Relationship="HastaneOtomasyon.FK_ameliyat_hastaBilgi" FromRole="hastaBilgi" ToRole="ameliyat" />
+          <NavigationProperty Name="hasta" Relationship="HastaneOtomasyon.FK_hastaBilgi_hasta" FromRole="hastaBilgi" ToRole="hasta" />
+        </EntityType>
+        <EntityType Name="hastaSikayet">
+          <Key>
+            <PropertyRef Name="hastaSikayetID" />
+          </Key>
+          <Property Name="hastaSikayetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="idrarTup">
+          <Key>
+            <PropertyRef Name="idrarTupID" />
+          </Key>
+          <Property Name="idrarTupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="turu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tahlil" Relationship="Self.FK_tahlilDurum_idrarTup" FromRole="idrarTup" ToRole="tahlil" />
+        </EntityType>
+        <EntityType Name="kanGrubu">
+          <Key>
+            <PropertyRef Name="kanGrubuID" />
+          </Key>
+          <Property Name="kanGrubuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kanGrubuAdi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="personel" Relationship="Self.FK_personel_kanGrubu" FromRole="kanGrubu" ToRole="personel" />
+          <NavigationProperty Name="hasta" Relationship="HastaneOtomasyon.FK_hasta_kanGrubu" FromRole="kanGrubu" ToRole="hasta" />
+        </EntityType>
+        <EntityType Name="kanTup">
+          <Key>
+            <PropertyRef Name="kanTupID" />
+          </Key>
+          <Property Name="kanTupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="turu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tahlil" Relationship="Self.FK_tahlilDurum_kanTup" FromRole="kanTup" ToRole="tahlil" />
+        </EntityType>
+        <EntityType Name="kullanici">
+          <Key>
+            <PropertyRef Name="kullaniciID" />
+          </Key>
+          <Property Name="kullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personelID" Type="Int32" Nullable="false" />
+          <Property Name="yetkiID" Type="Int32" Nullable="false" />
+          <Property Name="adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="personel" Relationship="Self.FK_kullanici_personel" FromRole="kullanici" ToRole="personel" />
+          <NavigationProperty Name="yetki" Relationship="Self.FK_kullanici_yetki" FromRole="kullanici" ToRole="yetki" />
+        </EntityType>
+        <EntityType Name="muayene">
+          <Key>
+            <PropertyRef Name="muayeneID" />
+          </Key>
+          <Property Name="muayeneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hastaID" Type="Int32" Nullable="false" />
+          <Property Name="personelID" Type="Int32" Nullable="false" />
+          <Property Name="randevuID" Type="Int32" Nullable="false" />
+          <Property Name="tahlilID" Type="Int32" />
+          <Property Name="baslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="personel" Relationship="Self.FK_muayene_personel" FromRole="muayene" ToRole="personel" />
+          <NavigationProperty Name="randevu" Relationship="Self.FK_muayene_randevu" FromRole="muayene" ToRole="randevu" />
+          <NavigationProperty Name="tahlil" Relationship="Self.FK_muayene_tahlilDurum" FromRole="muayene" ToRole="tahlil" />
+          <NavigationProperty Name="hasta" Relationship="HastaneOtomasyon.FK_muayene_hasta" FromRole="muayene" ToRole="hasta" />
+        </EntityType>
+        <EntityType Name="muayeneSonuc">
+          <Key>
+            <PropertyRef Name="muayeneSonucID" />
+          </Key>
+          <Property Name="muayeneSonucID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="muayeneID" Type="Int32" Nullable="false" />
+          <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="personel">
+          <Key>
+            <PropertyRef Name="personelID" />
+          </Key>
+          <Property Name="personelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bolumID" Type="Int32" />
+          <Property Name="poliklinikID" Type="Int32" />
+          <Property Name="yetkiID" Type="Int32" Nullable="false" />
+          <Property Name="kanGrubuID" Type="Int32" Nullable="false" />
+          <Property Name="durum" Type="Boolean" />
+          <Property Name="adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cinsiyet" Type="Boolean" />
+          <Property Name="medeniHali" Type="Boolean" />
+          <Property Name="adres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="cepTel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="evTel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rsifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dogumYeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dogumTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TCKimlikNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sicilNo" Type="Int32" />
+          <Property Name="diplomaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kayitTarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="kanGrubu" Relationship="Self.FK_personel_kanGrubu" FromRole="personel" ToRole="kanGrubu" />
+          <NavigationProperty Name="kullanici" Relationship="Self.FK_kullanici_personel" FromRole="personel" ToRole="kullanici" />
+          <NavigationProperty Name="muayene" Relationship="Self.FK_muayene_personel" FromRole="personel" ToRole="muayene" />
+          <NavigationProperty Name="poliklinik" Relationship="Self.FK_personel_poliklinik" FromRole="personel" ToRole="poliklinik" />
+          <NavigationProperty Name="yetki" Relationship="Self.FK_personel_yetki" FromRole="personel" ToRole="yetki" />
+          <NavigationProperty Name="randevu" Relationship="Self.FK_randevu_personel" FromRole="personel" ToRole="randevu" />
+          <NavigationProperty Name="recete" Relationship="Self.FK_recete_personel" FromRole="personel" ToRole="recete" />
+          <NavigationProperty Name="tahlil" Relationship="Self.FK_tahlilDurum_personel" FromRole="personel" ToRole="tahlil" />
+          <NavigationProperty Name="ameliyatKadro" Relationship="HastaneOtomasyon.FK_ameliyatKadrosu_personel" FromRole="personel" ToRole="ameliyatKadro" />
+          <NavigationProperty Name="bolum" Relationship="HastaneOtomasyon.FK_personel_bolum" FromRole="personel" ToRole="bolum" />
+          <Property Name="avatar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="poliklinik">
+          <Key>
+            <PropertyRef Name="poliklinikID" />
+          </Key>
+          <Property Name="poliklinikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bolumID" Type="Int32" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="durum" Type="Boolean" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="personel" Relationship="Self.FK_personel_poliklinik" FromRole="poliklinik" ToRole="personel" />
+          <NavigationProperty Name="randevu" Relationship="Self.FK_randevu_poliklinik" FromRole="poliklinik" ToRole="randevu" />
+          <NavigationProperty Name="bolum" Relationship="HastaneOtomasyon.FK_poliklinik_bolum" FromRole="poliklinik" ToRole="bolum" />
+        </EntityType>
+        <EntityType Name="randevu">
+          <Key>
+            <PropertyRef Name="randevuID" />
+          </Key>
+          <Property Name="randevuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personelID" Type="Int32" Nullable="false" />
+          <Property Name="hastaID" Type="Int32" Nullable="false" />
+          <Property Name="poliklinikID" Type="Int32" Nullable="false" />
+          <Property Name="randevuSaatID" Type="Int32" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <Property Name="saat" Type="Time" Precision="7" />
+          <Property Name="kayitTarihi" Type="DateTime" Precision="3" />
+          <Property Name="durum" Type="Boolean" />
+          <NavigationProperty Name="muayene" Relationship="Self.FK_muayene_randevu" FromRole="randevu" ToRole="muayene" />
+          <NavigationProperty Name="personel" Relationship="Self.FK_randevu_personel" FromRole="randevu" ToRole="personel" />
+          <NavigationProperty Name="poliklinik" Relationship="Self.FK_randevu_poliklinik" FromRole="randevu" ToRole="poliklinik" />
+          <NavigationProperty Name="randevuSaat" Relationship="Self.FK_randevu_randevuSaat" FromRole="randevu" ToRole="randevuSaat" />
+          <NavigationProperty Name="hasta" Relationship="HastaneOtomasyon.FK_randevu_hasta" FromRole="randevu" ToRole="hasta" />
+        </EntityType>
+        <EntityType Name="randevuSaat">
+          <Key>
+            <PropertyRef Name="randevuSaatID" />
+          </Key>
+          <Property Name="randevuSaatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="dolumOrani" Type="Int32" />
+          <Property Name="dolumBaslangic" Type="Int32" />
+          <Property Name="dolumPasif" Type="Boolean" />
+          <NavigationProperty Name="randevu" Relationship="Self.FK_randevu_randevuSaat" FromRole="randevuSaat" ToRole="randevu" />
+        </EntityType>
+        <EntityType Name="recete">
+          <Key>
+            <PropertyRef Name="receteID" />
+          </Key>
+          <Property Name="receteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personelID" Type="Int32" Nullable="false" />
+          <Property Name="hastaID" Type="Int32" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="personel" Relationship="Self.FK_recete_personel" FromRole="recete" ToRole="personel" />
+          <NavigationProperty Name="receteBilgi" Relationship="Self.FK_receteBilgi_recete" FromRole="recete" ToRole="receteBilgi" />
+          <NavigationProperty Name="hasta" Relationship="HastaneOtomasyon.FK_recete_hasta" FromRole="recete" ToRole="hasta" />
+        </EntityType>
+        <EntityType Name="receteBilgi">
+          <Key>
+            <PropertyRef Name="receteBilgiID" />
+          </Key>
+          <Property Name="receteBilgiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="receteID" Type="Int32" Nullable="false" />
+          <Property Name="barkodNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="doz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kullanımSekli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fiyat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="toplam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="recete" Relationship="Self.FK_receteBilgi_recete" FromRole="receteBilgi" ToRole="recete" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tahlil">
+          <Key>
+            <PropertyRef Name="tahlilID" />
+          </Key>
+          <Property Name="tahlilID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personelID" Type="Int32" Nullable="false" />
+          <Property Name="hastaID" Type="Int32" Nullable="false" />
+          <Property Name="kanTupID" Type="Int32" />
+          <Property Name="idrarTupID" Type="Int32" />
+          <Property Name="sonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="miktar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="idrarTup" Relationship="Self.FK_tahlilDurum_idrarTup" FromRole="tahlil" ToRole="idrarTup" />
+          <NavigationProperty Name="kanTup" Relationship="Self.FK_tahlilDurum_kanTup" FromRole="tahlil" ToRole="kanTup" />
+          <NavigationProperty Name="muayene" Relationship="Self.FK_muayene_tahlilDurum" FromRole="tahlil" ToRole="muayene" />
+          <NavigationProperty Name="personel" Relationship="Self.FK_tahlilDurum_personel" FromRole="tahlil" ToRole="personel" />
+          <NavigationProperty Name="ameliyat" Relationship="HastaneOtomasyon.FK_ameliyat_tahlil" FromRole="tahlil" ToRole="ameliyat" />
+          <NavigationProperty Name="hasta" Relationship="HastaneOtomasyon.FK_tahlilDurum_hasta" FromRole="tahlil" ToRole="hasta" />
+        </EntityType>
+        <EntityType Name="unvan">
+          <Key>
+            <PropertyRef Name="unvanID" />
+          </Key>
+          <Property Name="unvanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="türü" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="yetki">
+          <Key>
+            <PropertyRef Name="yetkiID" />
+          </Key>
+          <Property Name="yetkiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yetkiAd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="kullanici" Relationship="Self.FK_kullanici_yetki" FromRole="yetki" ToRole="kullanici" />
+          <NavigationProperty Name="personel" Relationship="Self.FK_personel_yetki" FromRole="yetki" ToRole="personel" />
+        </EntityType>
+        <Association Name="FK_tahlilDurum_idrarTup">
+          <End Role="idrarTup" Type="Self.idrarTup" Multiplicity="0..1" />
+          <End Role="tahlil" Type="Self.tahlil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="idrarTup">
+              <PropertyRef Name="idrarTupID" />
+            </Principal>
+            <Dependent Role="tahlil">
+              <PropertyRef Name="idrarTupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_kanGrubu">
+          <End Role="kanGrubu" Type="Self.kanGrubu" Multiplicity="1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kanGrubu">
+              <PropertyRef Name="kanGrubuID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="kanGrubuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tahlilDurum_kanTup">
+          <End Role="kanTup" Type="Self.kanTup" Multiplicity="0..1" />
+          <End Role="tahlil" Type="Self.tahlil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kanTup">
+              <PropertyRef Name="kanTupID" />
+            </Principal>
+            <Dependent Role="tahlil">
+              <PropertyRef Name="kanTupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kullanici_personel">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="kullanici" Type="Self.kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="kullanici">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kullanici_yetki">
+          <End Role="yetki" Type="Self.yetki" Multiplicity="1" />
+          <End Role="kullanici" Type="Self.kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="yetki">
+              <PropertyRef Name="yetkiID" />
+            </Principal>
+            <Dependent Role="kullanici">
+              <PropertyRef Name="yetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_muayene_personel">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="muayene" Type="Self.muayene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="muayene">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_muayene_randevu">
+          <End Role="randevu" Type="Self.randevu" Multiplicity="1" />
+          <End Role="muayene" Type="Self.muayene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="randevu">
+              <PropertyRef Name="randevuID" />
+            </Principal>
+            <Dependent Role="muayene">
+              <PropertyRef Name="randevuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_muayene_tahlilDurum">
+          <End Role="tahlil" Type="Self.tahlil" Multiplicity="0..1" />
+          <End Role="muayene" Type="Self.muayene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tahlil">
+              <PropertyRef Name="tahlilID" />
+            </Principal>
+            <Dependent Role="muayene">
+              <PropertyRef Name="tahlilID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_poliklinik">
+          <End Role="poliklinik" Type="Self.poliklinik" Multiplicity="0..1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="poliklinik">
+              <PropertyRef Name="poliklinikID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="poliklinikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_yetki">
+          <End Role="yetki" Type="Self.yetki" Multiplicity="1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="yetki">
+              <PropertyRef Name="yetkiID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="yetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_randevu_personel">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="randevu" Type="Self.randevu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="randevu">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_recete_personel">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="recete" Type="Self.recete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="recete">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tahlilDurum_personel">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="tahlil" Type="Self.tahlil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="tahlil">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_randevu_poliklinik">
+          <End Role="poliklinik" Type="Self.poliklinik" Multiplicity="1" />
+          <End Role="randevu" Type="Self.randevu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="poliklinik">
+              <PropertyRef Name="poliklinikID" />
+            </Principal>
+            <Dependent Role="randevu">
+              <PropertyRef Name="poliklinikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_randevu_randevuSaat">
+          <End Role="randevuSaat" Type="Self.randevuSaat" Multiplicity="1" />
+          <End Role="randevu" Type="Self.randevu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="randevuSaat">
+              <PropertyRef Name="randevuSaatID" />
+            </Principal>
+            <Dependent Role="randevu">
+              <PropertyRef Name="randevuSaatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receteBilgi_recete">
+          <End Role="recete" Type="Self.recete" Multiplicity="1" />
+          <End Role="receteBilgi" Type="Self.receteBilgi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recete">
+              <PropertyRef Name="receteID" />
+            </Principal>
+            <Dependent Role="receteBilgi">
+              <PropertyRef Name="receteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HastaneContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ELMAH_Error" EntityType="Self.ELMAH_Error" />
+          <EntitySet Name="hastaBilgi" EntityType="Self.hastaBilgi" />
+          <EntitySet Name="hastaSikayet" EntityType="Self.hastaSikayet" />
+          <EntitySet Name="idrarTup" EntityType="Self.idrarTup" />
+          <EntitySet Name="kanGrubu" EntityType="Self.kanGrubu" />
+          <EntitySet Name="kanTup" EntityType="Self.kanTup" />
+          <EntitySet Name="kullanici" EntityType="Self.kullanici" />
+          <EntitySet Name="muayene" EntityType="Self.muayene" />
+          <EntitySet Name="muayeneSonuc" EntityType="Self.muayeneSonuc" />
+          <EntitySet Name="personel" EntityType="Self.personel" />
+          <EntitySet Name="poliklinik" EntityType="Self.poliklinik" />
+          <EntitySet Name="randevu" EntityType="Self.randevu" />
+          <EntitySet Name="randevuSaat" EntityType="Self.randevuSaat" />
+          <EntitySet Name="recete" EntityType="Self.recete" />
+          <EntitySet Name="receteBilgi" EntityType="Self.receteBilgi" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tahlil" EntityType="Self.tahlil" />
+          <EntitySet Name="unvan" EntityType="Self.unvan" />
+          <EntitySet Name="yetki" EntityType="Self.yetki" />
+          <AssociationSet Name="FK_tahlilDurum_idrarTup" Association="Self.FK_tahlilDurum_idrarTup">
+            <End Role="idrarTup" EntitySet="idrarTup" />
+            <End Role="tahlil" EntitySet="tahlil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_kanGrubu" Association="Self.FK_personel_kanGrubu">
+            <End Role="kanGrubu" EntitySet="kanGrubu" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tahlilDurum_kanTup" Association="Self.FK_tahlilDurum_kanTup">
+            <End Role="kanTup" EntitySet="kanTup" />
+            <End Role="tahlil" EntitySet="tahlil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kullanici_personel" Association="Self.FK_kullanici_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="kullanici" EntitySet="kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kullanici_yetki" Association="Self.FK_kullanici_yetki">
+            <End Role="yetki" EntitySet="yetki" />
+            <End Role="kullanici" EntitySet="kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_muayene_personel" Association="Self.FK_muayene_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="muayene" EntitySet="muayene" />
+          </AssociationSet>
+          <AssociationSet Name="FK_muayene_randevu" Association="Self.FK_muayene_randevu">
+            <End Role="randevu" EntitySet="randevu" />
+            <End Role="muayene" EntitySet="muayene" />
+          </AssociationSet>
+          <AssociationSet Name="FK_muayene_tahlilDurum" Association="Self.FK_muayene_tahlilDurum">
+            <End Role="tahlil" EntitySet="tahlil" />
+            <End Role="muayene" EntitySet="muayene" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_poliklinik" Association="Self.FK_personel_poliklinik">
+            <End Role="poliklinik" EntitySet="poliklinik" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_yetki" Association="Self.FK_personel_yetki">
+            <End Role="yetki" EntitySet="yetki" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_randevu_personel" Association="Self.FK_randevu_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="randevu" EntitySet="randevu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_recete_personel" Association="Self.FK_recete_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="recete" EntitySet="recete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tahlilDurum_personel" Association="Self.FK_tahlilDurum_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="tahlil" EntitySet="tahlil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_randevu_poliklinik" Association="Self.FK_randevu_poliklinik">
+            <End Role="poliklinik" EntitySet="poliklinik" />
+            <End Role="randevu" EntitySet="randevu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_randevu_randevuSaat" Association="Self.FK_randevu_randevuSaat">
+            <End Role="randevuSaat" EntitySet="randevuSaat" />
+            <End Role="randevu" EntitySet="randevu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receteBilgi_recete" Association="Self.FK_receteBilgi_recete">
+            <End Role="recete" EntitySet="recete" />
+            <End Role="receteBilgi" EntitySet="receteBilgi" />
+          </AssociationSet>
+          <EntitySet Name="ameliyat" EntityType="HastaneOtomasyon.ameliyat" />
+          <AssociationSet Name="FK_ameliyat_hastaBilgi" Association="HastaneOtomasyon.FK_ameliyat_hastaBilgi">
+            <End Role="hastaBilgi" EntitySet="hastaBilgi" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyat_tahlil" Association="HastaneOtomasyon.FK_ameliyat_tahlil">
+            <End Role="tahlil" EntitySet="tahlil" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <EntitySet Name="ameliyatKadro" EntityType="HastaneOtomasyon.ameliyatKadro" />
+          <AssociationSet Name="FK_ameliyatKadrosu_personel" Association="HastaneOtomasyon.FK_ameliyatKadrosu_personel">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="ameliyatKadro" EntitySet="ameliyatKadro" />
+          </AssociationSet>
+          <EntitySet Name="ameliyatOdasi" EntityType="HastaneOtomasyon.ameliyatOdasi" />
+          <AssociationSet Name="FK_ameliyat_ameliyatOdasi" Association="HastaneOtomasyon.FK_ameliyat_ameliyatOdasi">
+            <End Role="ameliyatOdasi" EntitySet="ameliyatOdasi" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <EntitySet Name="ameliyatEkip" EntityType="HastaneOtomasyon.ameliyatEkip" />
+          <AssociationSet Name="FK_ameliyat_ameliyatEkip" Association="HastaneOtomasyon.FK_ameliyat_ameliyatEkip">
+            <End Role="ameliyatEkip" EntitySet="ameliyatEkip" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyatKadrosu_ameliyatEkip" Association="HastaneOtomasyon.FK_ameliyatKadrosu_ameliyatEkip">
+            <End Role="ameliyatEkip" EntitySet="ameliyatEkip" />
+            <End Role="ameliyatKadro" EntitySet="ameliyatKadro" />
+          </AssociationSet>
+          <EntitySet Name="bolum" EntityType="HastaneOtomasyon.bolum" />
+          <AssociationSet Name="FK_ameliyat_bolum" Association="HastaneOtomasyon.FK_ameliyat_bolum">
+            <End Role="bolum" EntitySet="bolum" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_bolum" Association="HastaneOtomasyon.FK_personel_bolum">
+            <End Role="bolum" EntitySet="bolum" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_poliklinik_bolum" Association="HastaneOtomasyon.FK_poliklinik_bolum">
+            <End Role="bolum" EntitySet="bolum" />
+            <End Role="poliklinik" EntitySet="poliklinik" />
+          </AssociationSet>
+          <EntitySet Name="hastaneOda" EntityType="HastaneOtomasyon.hastaneOda" />
+          <EntitySet Name="vatandasYetki" EntityType="HastaneOtomasyon.vatandasYetki" />
+          <EntitySet Name="hasta" EntityType="HastaneOtomasyon.hasta" />
+          <AssociationSet Name="FK_ameliyat_hasta" Association="HastaneOtomasyon.FK_ameliyat_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="ameliyat" EntitySet="ameliyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hasta_kanGrubu" Association="HastaneOtomasyon.FK_hasta_kanGrubu">
+            <End Role="kanGrubu" EntitySet="kanGrubu" />
+            <End Role="hasta" EntitySet="hasta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hasta_vatandasYetki" Association="HastaneOtomasyon.FK_hasta_vatandasYetki">
+            <End Role="vatandasYetki" EntitySet="vatandasYetki" />
+            <End Role="hasta" EntitySet="hasta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hastaBilgi_hasta" Association="HastaneOtomasyon.FK_hastaBilgi_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="hastaBilgi" EntitySet="hastaBilgi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_muayene_hasta" Association="HastaneOtomasyon.FK_muayene_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="muayene" EntitySet="muayene" />
+          </AssociationSet>
+          <AssociationSet Name="FK_randevu_hasta" Association="HastaneOtomasyon.FK_randevu_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="randevu" EntitySet="randevu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_recete_hasta" Association="HastaneOtomasyon.FK_recete_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="recete" EntitySet="recete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tahlilDurum_hasta" Association="HastaneOtomasyon.FK_tahlilDurum_hasta">
+            <End Role="hasta" EntitySet="hasta" />
+            <End Role="tahlil" EntitySet="tahlil" />
+          </AssociationSet>
+          <EntitySet Name="ameliyatSonuc" EntityType="HastaneOtomasyon.ameliyatSonuc" />
+          <AssociationSet Name="FK_ameliyatSonuc_ameliyat" Association="HastaneOtomasyon.FK_ameliyatSonuc_ameliyat">
+            <End Role="ameliyat" EntitySet="ameliyat" />
+            <End Role="ameliyatSonuc" EntitySet="ameliyatSonuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ameliyatSonuc_hastaneOda" Association="HastaneOtomasyon.FK_ameliyatSonuc_hastaneOda">
+            <End Role="hastaneOda" EntitySet="hastaneOda" />
+            <End Role="ameliyatSonuc" EntitySet="ameliyatSonuc" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ameliyat">
+          <Key>
+            <PropertyRef Name="ameliyatID" />
+          </Key>
+          <Property Name="ameliyatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bolumID" Type="Int32" />
+          <Property Name="hastaID" Type="Int32" />
+          <Property Name="hastaBilgiID" Type="Int32" />
+          <Property Name="tahlilID" Type="Int32" />
+          <Property Name="ameliyatOdasiID" Type="Int32" />
+          <Property Name="ameliyatEkibiID" Type="Int32" />
+          <Property Name="onay" Type="Boolean" />
+          <Property Name="belge" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ameliyatBaslangicTarih" Type="DateTime" Precision="0" />
+          <Property Name="ameliyatBaslangicSaati" Type="Time" Precision="7" />
+          <Property Name="onayTarih" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="hastaBilgi" Relationship="HastaneOtomasyon.FK_ameliyat_hastaBilgi" FromRole="ameliyat" ToRole="hastaBilgi" />
+          <NavigationProperty Name="tahlil" Relationship="HastaneOtomasyon.FK_ameliyat_tahlil" FromRole="ameliyat" ToRole="tahlil" />
+          <NavigationProperty Name="ameliyatOdasi" Relationship="HastaneOtomasyon.FK_ameliyat_ameliyatOdasi" FromRole="ameliyat" ToRole="ameliyatOdasi" />
+          <NavigationProperty Name="ameliyatEkip" Relationship="HastaneOtomasyon.FK_ameliyat_ameliyatEkip" FromRole="ameliyat" ToRole="ameliyatEkip" />
+          <NavigationProperty Name="bolum" Relationship="HastaneOtomasyon.FK_ameliyat_bolum" FromRole="ameliyat" ToRole="bolum" />
+          <NavigationProperty Name="hasta" Relationship="HastaneOtomasyon.FK_ameliyat_hasta" FromRole="ameliyat" ToRole="hasta" />
+          <NavigationProperty Name="ameliyatSonuc" Relationship="HastaneOtomasyon.FK_ameliyatSonuc_ameliyat" FromRole="ameliyat" ToRole="ameliyatSonuc" />
+        </EntityType>
+        <Association Name="FK_ameliyat_hastaBilgi">
+          <End Type="HastaneOtomasyon.hastaBilgi" Role="hastaBilgi" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.ameliyat" Role="ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hastaBilgi">
+              <PropertyRef Name="hastaBilgiID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="hastaBilgiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyat_tahlil">
+          <End Type="HastaneOtomasyon.tahlil" Role="tahlil" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.ameliyat" Role="ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tahlil">
+              <PropertyRef Name="tahlilID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="tahlilID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ameliyatKadro">
+          <Key>
+            <PropertyRef Name="ameliyatKadroID" />
+          </Key>
+          <Property Name="ameliyatKadroID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ameliyatEkipID" Type="Int32" />
+          <Property Name="personelID" Type="Int32" />
+          <Property Name="durum" Type="Boolean" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="personel" Relationship="HastaneOtomasyon.FK_ameliyatKadrosu_personel" FromRole="ameliyatKadro" ToRole="personel" />
+          <NavigationProperty Name="ameliyatEkip" Relationship="HastaneOtomasyon.FK_ameliyatKadrosu_ameliyatEkip" FromRole="ameliyatKadro" ToRole="ameliyatEkip" />
+        </EntityType>
+        <Association Name="FK_ameliyatKadrosu_personel">
+          <End Type="HastaneOtomasyon.personel" Role="personel" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.ameliyatKadro" Role="ameliyatKadro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelID" />
+            </Principal>
+            <Dependent Role="ameliyatKadro">
+              <PropertyRef Name="personelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ameliyatOdasi">
+          <Key>
+            <PropertyRef Name="ameliyatOdasiID" />
+          </Key>
+          <Property Name="ameliyatOdasiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="odaDurum" Type="Boolean" />
+          <Property Name="durum" Type="Boolean" />
+          <NavigationProperty Name="ameliyat" Relationship="HastaneOtomasyon.FK_ameliyat_ameliyatOdasi" FromRole="ameliyatOdasi" ToRole="ameliyat" />
+        </EntityType>
+        <Association Name="FK_ameliyat_ameliyatOdasi">
+          <End Type="HastaneOtomasyon.ameliyatOdasi" Role="ameliyatOdasi" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.ameliyat" Role="ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ameliyatOdasi">
+              <PropertyRef Name="ameliyatOdasiID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="ameliyatOdasiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ameliyatEkip">
+          <Key>
+            <PropertyRef Name="ameliyatEkipID" />
+          </Key>
+          <Property Name="ameliyatEkipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ekipDurum" Type="Boolean" />
+          <Property Name="durum" Type="Boolean" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ameliyat" Relationship="HastaneOtomasyon.FK_ameliyat_ameliyatEkip" FromRole="ameliyatEkip" ToRole="ameliyat" />
+          <NavigationProperty Name="ameliyatKadro" Relationship="HastaneOtomasyon.FK_ameliyatKadrosu_ameliyatEkip" FromRole="ameliyatEkip" ToRole="ameliyatKadro" />
+        </EntityType>
+        <Association Name="FK_ameliyat_ameliyatEkip">
+          <End Type="HastaneOtomasyon.ameliyatEkip" Role="ameliyatEkip" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.ameliyat" Role="ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ameliyatEkip">
+              <PropertyRef Name="ameliyatEkipID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="ameliyatEkibiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyatKadrosu_ameliyatEkip">
+          <End Type="HastaneOtomasyon.ameliyatEkip" Role="ameliyatEkip" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.ameliyatKadro" Role="ameliyatKadro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ameliyatEkip">
+              <PropertyRef Name="ameliyatEkipID" />
+            </Principal>
+            <Dependent Role="ameliyatKadro">
+              <PropertyRef Name="ameliyatEkipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="bolum">
+          <Key>
+            <PropertyRef Name="bolumID" />
+          </Key>
+          <Property Name="bolumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ameliyat" Relationship="HastaneOtomasyon.FK_ameliyat_bolum" FromRole="bolum" ToRole="ameliyat" />
+          <NavigationProperty Name="personel" Relationship="HastaneOtomasyon.FK_personel_bolum" FromRole="bolum" ToRole="personel" />
+          <NavigationProperty Name="poliklinik" Relationship="HastaneOtomasyon.FK_poliklinik_bolum" FromRole="bolum" ToRole="poliklinik" />
+        </EntityType>
+        <Association Name="FK_ameliyat_bolum">
+          <End Type="HastaneOtomasyon.bolum" Role="bolum" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.ameliyat" Role="ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolum">
+              <PropertyRef Name="bolumID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="bolumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_bolum">
+          <End Type="HastaneOtomasyon.bolum" Role="bolum" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.personel" Role="personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolum">
+              <PropertyRef Name="bolumID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="bolumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_poliklinik_bolum">
+          <End Type="HastaneOtomasyon.bolum" Role="bolum" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.poliklinik" Role="poliklinik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolum">
+              <PropertyRef Name="bolumID" />
+            </Principal>
+            <Dependent Role="poliklinik">
+              <PropertyRef Name="bolumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="hastaneOda">
+          <Key>
+            <PropertyRef Name="hastaneOdaID" />
+          </Key>
+          <Property Name="hastaneOdaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="durum" Type="Boolean" />
+          <Property Name="baslangic" Type="Int32" />
+          <Property Name="bitis" Type="Int32" />
+          <NavigationProperty Name="ameliyatSonuc" Relationship="HastaneOtomasyon.FK_ameliyatSonuc_hastaneOda" FromRole="hastaneOda" ToRole="ameliyatSonuc" />
+        </EntityType>
+        <EntityType Name="vatandasYetki">
+          <Key>
+            <PropertyRef Name="vatandasYetkiID" />
+          </Key>
+          <Property Name="vatandasYetkiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="durum" Type="Boolean" />
+          <NavigationProperty Name="hasta" Relationship="HastaneOtomasyon.FK_hasta_vatandasYetki" FromRole="vatandasYetki" ToRole="hasta" />
+        </EntityType>
+        <EntityType Name="hasta">
+          <Key>
+            <PropertyRef Name="hastaID" />
+          </Key>
+          <Property Name="hastaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vatandasYetkiID" Type="Int32" />
+          <Property Name="kanGrubuID" Type="Int32" />
+          <Property Name="TCKimlikNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rsifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="soyadi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dogumTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="adres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cinsiyet" Type="Boolean" Nullable="false" />
+          <Property Name="medeniHali" Type="Boolean" />
+          <Property Name="meslek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kayitTarihi" Type="DateTime" Precision="3" />
+          <Property Name="cepTel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="evTel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="isTel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dogumYeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sicilNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sgk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="il" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilce" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="anne" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="baba" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ameliyat" Relationship="HastaneOtomasyon.FK_ameliyat_hasta" FromRole="hasta" ToRole="ameliyat" />
+          <NavigationProperty Name="kanGrubu" Relationship="HastaneOtomasyon.FK_hasta_kanGrubu" FromRole="hasta" ToRole="kanGrubu" />
+          <NavigationProperty Name="vatandasYetki" Relationship="HastaneOtomasyon.FK_hasta_vatandasYetki" FromRole="hasta" ToRole="vatandasYetki" />
+          <NavigationProperty Name="hastaBilgi" Relationship="HastaneOtomasyon.FK_hastaBilgi_hasta" FromRole="hasta" ToRole="hastaBilgi" />
+          <NavigationProperty Name="muayene" Relationship="HastaneOtomasyon.FK_muayene_hasta" FromRole="hasta" ToRole="muayene" />
+          <NavigationProperty Name="randevu" Relationship="HastaneOtomasyon.FK_randevu_hasta" FromRole="hasta" ToRole="randevu" />
+          <NavigationProperty Name="recete" Relationship="HastaneOtomasyon.FK_recete_hasta" FromRole="hasta" ToRole="recete" />
+          <NavigationProperty Name="tahlil" Relationship="HastaneOtomasyon.FK_tahlilDurum_hasta" FromRole="hasta" ToRole="tahlil" />
+        </EntityType>
+        <Association Name="FK_ameliyat_hasta">
+          <End Type="HastaneOtomasyon.hasta" Role="hasta" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.ameliyat" Role="ameliyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="ameliyat">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hasta_kanGrubu">
+          <End Type="HastaneOtomasyon.kanGrubu" Role="kanGrubu" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.hasta" Role="hasta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kanGrubu">
+              <PropertyRef Name="kanGrubuID" />
+            </Principal>
+            <Dependent Role="hasta">
+              <PropertyRef Name="kanGrubuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hasta_vatandasYetki">
+          <End Type="HastaneOtomasyon.vatandasYetki" Role="vatandasYetki" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.hasta" Role="hasta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vatandasYetki">
+              <PropertyRef Name="vatandasYetkiID" />
+            </Principal>
+            <Dependent Role="hasta">
+              <PropertyRef Name="vatandasYetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hastaBilgi_hasta">
+          <End Type="HastaneOtomasyon.hasta" Role="hasta" Multiplicity="1" />
+          <End Type="HastaneOtomasyon.hastaBilgi" Role="hastaBilgi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="hastaBilgi">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_muayene_hasta">
+          <End Type="HastaneOtomasyon.hasta" Role="hasta" Multiplicity="1" />
+          <End Type="HastaneOtomasyon.muayene" Role="muayene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="muayene">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_randevu_hasta">
+          <End Type="HastaneOtomasyon.hasta" Role="hasta" Multiplicity="1" />
+          <End Type="HastaneOtomasyon.randevu" Role="randevu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="randevu">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_recete_hasta">
+          <End Type="HastaneOtomasyon.hasta" Role="hasta" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.recete" Role="recete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="recete">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tahlilDurum_hasta">
+          <End Type="HastaneOtomasyon.hasta" Role="hasta" Multiplicity="1" />
+          <End Type="HastaneOtomasyon.tahlil" Role="tahlil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hasta">
+              <PropertyRef Name="hastaID" />
+            </Principal>
+            <Dependent Role="tahlil">
+              <PropertyRef Name="hastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ameliyatSonuc">
+          <Key>
+            <PropertyRef Name="ameliyatSonucID" />
+          </Key>
+          <Property Name="ameliyatSonucID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ameliyatID" Type="Int32" />
+          <Property Name="hastaneOdaID" Type="Int32" />
+          <Property Name="ameliyatDurum" Type="Boolean" />
+          <Property Name="hastaDurum" Type="Boolean" />
+          <Property Name="durum" Type="Boolean" />
+          <Property Name="ameliyatBitisTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ameliyat" Relationship="HastaneOtomasyon.FK_ameliyatSonuc_ameliyat" FromRole="ameliyatSonuc" ToRole="ameliyat" />
+          <NavigationProperty Name="hastaneOda" Relationship="HastaneOtomasyon.FK_ameliyatSonuc_hastaneOda" FromRole="ameliyatSonuc" ToRole="hastaneOda" />
+        </EntityType>
+        <Association Name="FK_ameliyatSonuc_ameliyat">
+          <End Type="HastaneOtomasyon.ameliyat" Role="ameliyat" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.ameliyatSonuc" Role="ameliyatSonuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ameliyat">
+              <PropertyRef Name="ameliyatID" />
+            </Principal>
+            <Dependent Role="ameliyatSonuc">
+              <PropertyRef Name="ameliyatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ameliyatSonuc_hastaneOda">
+          <End Type="HastaneOtomasyon.hastaneOda" Role="hastaneOda" Multiplicity="0..1" />
+          <End Type="HastaneOtomasyon.ameliyatSonuc" Role="ameliyatSonuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hastaneOda">
+              <PropertyRef Name="hastaneOdaID" />
+            </Principal>
+            <Dependent Role="ameliyatSonuc">
+              <PropertyRef Name="hastaneOdaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HastaneOtomasyonStoreContainer" CdmEntityContainer="HastaneContext">
+          <EntitySetMapping Name="ELMAH_Error">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.ELMAH_Error">
+              <MappingFragment StoreEntitySet="ELMAH_Error">
+                <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="TimeUtc" ColumnName="TimeUtc" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="AllXml" ColumnName="AllXml" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hastaBilgi">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.hastaBilgi">
+              <MappingFragment StoreEntitySet="hastaBilgi">
+                <ScalarProperty Name="hastaBilgiID" ColumnName="hastaBilgiID" />
+                <ScalarProperty Name="hastaID" ColumnName="hastaID" />
+                <ScalarProperty Name="alerjiler" ColumnName="alerjiler" />
+                <ScalarProperty Name="ilaclar" ColumnName="ilaclar" />
+                <ScalarProperty Name="hastalık" ColumnName="hastalık" />
+                <ScalarProperty Name="ameliyat" ColumnName="ameliyat" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hastaSikayet">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.hastaSikayet">
+              <MappingFragment StoreEntitySet="hastaSikayet">
+                <ScalarProperty Name="hastaSikayetID" ColumnName="hastaSikayetID" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="idrarTup">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.idrarTup">
+              <MappingFragment StoreEntitySet="idrarTup">
+                <ScalarProperty Name="idrarTupID" ColumnName="idrarTupID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="turu" ColumnName="turu" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kanGrubu">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.kanGrubu">
+              <MappingFragment StoreEntitySet="kanGrubu">
+                <ScalarProperty Name="kanGrubuID" ColumnName="kanGrubuID" />
+                <ScalarProperty Name="kanGrubuAdi" ColumnName="kanGrubuAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kanTup">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.kanTup">
+              <MappingFragment StoreEntitySet="kanTup">
+                <ScalarProperty Name="kanTupID" ColumnName="kanTupID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="turu" ColumnName="turu" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kullanici">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.kullanici">
+              <MappingFragment StoreEntitySet="kullanici">
+                <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
+                <ScalarProperty Name="personelID" ColumnName="personelID" />
+                <ScalarProperty Name="yetkiID" ColumnName="yetkiID" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="muayene">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.muayene">
+              <MappingFragment StoreEntitySet="muayene">
+                <ScalarProperty Name="muayeneID" ColumnName="muayeneID" />
+                <ScalarProperty Name="hastaID" ColumnName="hastaID" />
+                <ScalarProperty Name="personelID" ColumnName="personelID" />
+                <ScalarProperty Name="randevuID" ColumnName="randevuID" />
+                <ScalarProperty Name="tahlilID" ColumnName="tahlilID" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="muayeneSonuc">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.muayeneSonuc">
+              <MappingFragment StoreEntitySet="muayeneSonuc">
+                <ScalarProperty Name="muayeneSonucID" ColumnName="muayeneSonucID" />
+                <ScalarProperty Name="muayeneID" ColumnName="muayeneID" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personel">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.personel">
+              <MappingFragment StoreEntitySet="personel">
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="personelID" ColumnName="personelID" />
+                <ScalarProperty Name="bolumID" ColumnName="bolumID" />
+                <ScalarProperty Name="poliklinikID" ColumnName="poliklinikID" />
+                <ScalarProperty Name="yetkiID" ColumnName="yetkiID" />
+                <ScalarProperty Name="kanGrubuID" ColumnName="kanGrubuID" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="soyadi" ColumnName="soyadi" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="medeniHali" ColumnName="medeniHali" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="cepTel" ColumnName="cepTel" />
+                <ScalarProperty Name="evTel" ColumnName="evTel" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="rsifre" ColumnName="rsifre" />
+                <ScalarProperty Name="dogumYeri" ColumnName="dogumYeri" />
+                <ScalarProperty Name="dogumTarihi" ColumnName="dogumTarihi" />
+                <ScalarProperty Name="TCKimlikNo" ColumnName="TCKimlikNo" />
+                <ScalarProperty Name="sicilNo" ColumnName="sicilNo" />
+                <ScalarProperty Name="diplomaNo" ColumnName="diplomaNo" />
+                <ScalarProperty Name="kayitTarihi" ColumnName="kayitTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="poliklinik">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.poliklinik">
+              <MappingFragment StoreEntitySet="poliklinik">
+                <ScalarProperty Name="poliklinikID" ColumnName="poliklinikID" />
+                <ScalarProperty Name="bolumID" ColumnName="bolumID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="randevu">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.randevu">
+              <MappingFragment StoreEntitySet="randevu">
+                <ScalarProperty Name="randevuID" ColumnName="randevuID" />
+                <ScalarProperty Name="personelID" ColumnName="personelID" />
+                <ScalarProperty Name="hastaID" ColumnName="hastaID" />
+                <ScalarProperty Name="poliklinikID" ColumnName="poliklinikID" />
+                <ScalarProperty Name="randevuSaatID" ColumnName="randevuSaatID" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="saat" ColumnName="saat" />
+                <ScalarProperty Name="kayitTarihi" ColumnName="kayitTarihi" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="randevuSaat">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.randevuSaat">
+              <MappingFragment StoreEntitySet="randevuSaat">
+                <ScalarProperty Name="randevuSaatID" ColumnName="randevuSaatID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="dolumOrani" ColumnName="dolumOrani" />
+                <ScalarProperty Name="dolumBaslangic" ColumnName="dolumBaslangic" />
+                <ScalarProperty Name="dolumPasif" ColumnName="dolumPasif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recete">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.recete">
+              <MappingFragment StoreEntitySet="recete">
+                <ScalarProperty Name="receteID" ColumnName="receteID" />
+                <ScalarProperty Name="personelID" ColumnName="personelID" />
+                <ScalarProperty Name="hastaID" ColumnName="hastaID" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="receteBilgi">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.receteBilgi">
+              <MappingFragment StoreEntitySet="receteBilgi">
+                <ScalarProperty Name="receteBilgiID" ColumnName="receteBilgiID" />
+                <ScalarProperty Name="receteID" ColumnName="receteID" />
+                <ScalarProperty Name="barkodNo" ColumnName="barkodNo" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="doz" ColumnName="doz" />
+                <ScalarProperty Name="adet" ColumnName="adet" />
+                <ScalarProperty Name="kullanımSekli" ColumnName="kullanımSekli" />
+                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+                <ScalarProperty Name="toplam" ColumnName="toplam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tahlil">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.tahlil">
+              <MappingFragment StoreEntitySet="tahlil">
+                <ScalarProperty Name="tahlilID" ColumnName="tahlilID" />
+                <ScalarProperty Name="personelID" ColumnName="personelID" />
+                <ScalarProperty Name="hastaID" ColumnName="hastaID" />
+                <ScalarProperty Name="kanTupID" ColumnName="kanTupID" />
+                <ScalarProperty Name="idrarTupID" ColumnName="idrarTupID" />
+                <ScalarProperty Name="sonuc" ColumnName="sonuc" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="miktar" ColumnName="miktar" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unvan">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.unvan">
+              <MappingFragment StoreEntitySet="unvan">
+                <ScalarProperty Name="unvanID" ColumnName="unvanID" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="türü" ColumnName="türü" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yetki">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.yetki">
+              <MappingFragment StoreEntitySet="yetki">
+                <ScalarProperty Name="yetkiID" ColumnName="yetkiID" />
+                <ScalarProperty Name="yetkiAd" ColumnName="yetkiAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ameliyat">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.ameliyat">
+              <MappingFragment StoreEntitySet="ameliyat">
+                <ScalarProperty Name="onayTarih" ColumnName="onayTarih" />
+                <ScalarProperty Name="ameliyatBaslangicSaati" ColumnName="ameliyatBaslangicSaati" />
+                <ScalarProperty Name="ameliyatBaslangicTarih" ColumnName="ameliyatBaslangicTarih" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="belge" ColumnName="belge" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+                <ScalarProperty Name="ameliyatEkibiID" ColumnName="ameliyatEkibiID" />
+                <ScalarProperty Name="ameliyatOdasiID" ColumnName="ameliyatOdasiID" />
+                <ScalarProperty Name="tahlilID" ColumnName="tahlilID" />
+                <ScalarProperty Name="hastaBilgiID" ColumnName="hastaBilgiID" />
+                <ScalarProperty Name="hastaID" ColumnName="hastaID" />
+                <ScalarProperty Name="bolumID" ColumnName="bolumID" />
+                <ScalarProperty Name="ameliyatID" ColumnName="ameliyatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ameliyatKadro">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.ameliyatKadro">
+              <MappingFragment StoreEntitySet="ameliyatKadro">
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="personelID" ColumnName="personelID" />
+                <ScalarProperty Name="ameliyatEkipID" ColumnName="ameliyatEkipID" />
+                <ScalarProperty Name="ameliyatKadroID" ColumnName="ameliyatKadroID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ameliyatOdasi">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.ameliyatOdasi">
+              <MappingFragment StoreEntitySet="ameliyatOdasi">
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="odaDurum" ColumnName="odaDurum" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="ameliyatOdasiID" ColumnName="ameliyatOdasiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ameliyatEkip">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.ameliyatEkip">
+              <MappingFragment StoreEntitySet="ameliyatEkip">
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="ekipDurum" ColumnName="ekipDurum" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="ameliyatEkipID" ColumnName="ameliyatEkipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bolum">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.bolum">
+              <MappingFragment StoreEntitySet="bolum">
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="bolumID" ColumnName="bolumID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hastaneOda">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.hastaneOda">
+              <MappingFragment StoreEntitySet="hastaneOda">
+                <ScalarProperty Name="bitis" ColumnName="bitis" />
+                <ScalarProperty Name="baslangic" ColumnName="baslangic" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="hastaneOdaID" ColumnName="hastaneOdaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vatandasYetki">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.vatandasYetki">
+              <MappingFragment StoreEntitySet="vatandasYetki">
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="vatandasYetkiID" ColumnName="vatandasYetkiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hasta">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.hasta">
+              <MappingFragment StoreEntitySet="hasta">
+                <ScalarProperty Name="baba" ColumnName="baba" />
+                <ScalarProperty Name="anne" ColumnName="anne" />
+                <ScalarProperty Name="ilce" ColumnName="ilce" />
+                <ScalarProperty Name="il" ColumnName="il" />
+                <ScalarProperty Name="sgk" ColumnName="sgk" />
+                <ScalarProperty Name="sicilNo" ColumnName="sicilNo" />
+                <ScalarProperty Name="dogumYeri" ColumnName="dogumYeri" />
+                <ScalarProperty Name="isTel" ColumnName="isTel" />
+                <ScalarProperty Name="evTel" ColumnName="evTel" />
+                <ScalarProperty Name="cepTel" ColumnName="cepTel" />
+                <ScalarProperty Name="kayitTarihi" ColumnName="kayitTarihi" />
+                <ScalarProperty Name="meslek" ColumnName="meslek" />
+                <ScalarProperty Name="medeniHali" ColumnName="medeniHali" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="dogumTarihi" ColumnName="dogumTarihi" />
+                <ScalarProperty Name="soyadi" ColumnName="soyadi" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="rsifre" ColumnName="rsifre" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="TCKimlikNo" ColumnName="TCKimlikNo" />
+                <ScalarProperty Name="kanGrubuID" ColumnName="kanGrubuID" />
+                <ScalarProperty Name="vatandasYetkiID" ColumnName="vatandasYetkiID" />
+                <ScalarProperty Name="hastaID" ColumnName="hastaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ameliyatSonuc">
+            <EntityTypeMapping TypeName="HastaneOtomasyon.ameliyatSonuc">
+              <MappingFragment StoreEntitySet="ameliyatSonuc">
+                <ScalarProperty Name="ameliyatBitisTarih" ColumnName="ameliyatBitisTarih" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="hastaDurum" ColumnName="hastaDurum" />
+                <ScalarProperty Name="ameliyatDurum" ColumnName="ameliyatDurum" />
+                <ScalarProperty Name="hastaneOdaID" ColumnName="hastaneOdaID" />
+                <ScalarProperty Name="ameliyatID" ColumnName="ameliyatID" />
+                <ScalarProperty Name="ameliyatSonucID" ColumnName="ameliyatSonucID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,92 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.kullanici
+
+@{
+    ViewBag.Title = "Bilgiler";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("BilgilerDegistir", "Personel", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <h3>Profil Bilgisi</h3>
+        <hr />
+        @Html.LabelFor(model => model.personel.TCKimlikNo, "T.C KİMLİK NO")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-certificate"></i></div>
+            @Html.TextBoxFor(model => model.personel.TCKimlikNo, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.personel.TCKimlikNo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.personel.adi, "ADI")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+            @Html.TextBoxFor(model => model.personel.adi, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.personel.adi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.personel.soyadi, "SOYADI")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-medkit"></i></div>
+            @Html.TextBoxFor(model => model.personel.soyadi, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.personel.soyadi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.personel.cinsiyet, "CİNSİYET")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-venus-mars"></i></div>
+            @Html.DropDownListFor(m => m.personel.cinsiyet, new List<SelectListItem>
+    { new SelectListItem{Text="Erkek", Value="True"},
+     new SelectListItem{Text="Kadın", Value="False"}}, new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.personel.dogumTarihi, "DOĞUM TARİHİ")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-birthday-cake"></i></div>
+            @Html.TextBoxFor(model => model.personel.dogumTarihi, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.personel.dogumTarihi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            <button class="btn btn-success">
+                <i class="fa fa-check"></i>
+                Bilgileri Güncelle
+            </button>
+        </div>*@
+    @ViewBag.Basarili
+}
+
+
+
+
+
+
+@*<div class="form-group">
+        @Html.LabelFor(model => model.adi, "KULLANICI ADI:")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+            @Html.TextBoxFor(model => model.adi, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.adi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.sifre, "ŞİFRE")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-key"></i></div>
+            @Html.TextBoxFor(model => model.sifre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.sifre, "", new { @class = "text-danger" })
+        </div>
+    </div>*@

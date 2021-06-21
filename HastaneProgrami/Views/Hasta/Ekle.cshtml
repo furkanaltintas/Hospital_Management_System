@@ -1,0 +1,121 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.hasta
+
+@{
+    ViewBag.Title = "HASTA EKLE";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>HASTA İŞLEM</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.adi, "HASTA ADI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                @Html.TextBoxFor(model => model.adi, new { @class = "form-control", @maxLength = "25" })
+            </div>
+            @Html.ValidationMessageFor(model => model.adi, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.soyadi, "HASTA SOYADI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                @Html.TextBoxFor(model => model.soyadi, new { @class = "form-control", @maxLength = "25" })
+            </div>
+            @Html.ValidationMessageFor(model => model.soyadi, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TCKimlikNo, "TC KİMLİK NO")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-certificate" aria-hidden="true"></i></div>
+                @Html.TextBoxFor(model => model.TCKimlikNo, new { @class = "form-control", @maxLength = "11" })
+            </div>
+            @Html.ValidationMessageFor(model => model.TCKimlikNo, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cinsiyet, "CİNSİYET")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-venus-mars" aria-hidden="true"></i></div>
+                @Html.DropDownListFor(m => m.cinsiyet, new List<SelectListItem>
+               { new SelectListItem{Text="Erkek", Value="True"},
+                 new SelectListItem{Text="Kadın", Value="False"}}, "Cinsiyet Seçiniz", new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.cinsiyet, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.kanGrubu.kanGrubuID, "KAN GRUBU")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i></div>
+                @Html.DropDownList("kanGrubuID", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.kanGrubu.kanGrubuID, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cepTel, "TELEFON NUMARASI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+                @Html.EditorFor(model => model.cepTel, new { htmlAttributes = new { @class = "form-control", @id = "input-phone" } })
+            </div>
+            @Html.ValidationMessageFor(model => model.cepTel, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sifre, "ŞİFRE")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></div>
+                @Html.PasswordFor(model => model.sifre, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.sifre, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dogumTarihi, "DOĞUM TARİHİ")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-birthday-cake" aria-hidden="true"></i></div>
+                @Html.TextBoxFor(model => model.dogumTarihi, new { @class = "form-control datetimepicker", @Value = DateTime.Now.ToString("dd'/'MM'/'yyyy"), type = "datetime" })
+            </div>
+            @Html.ValidationMessageFor(model => model.dogumTarihi, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <div class="">
+                <a href="/Hasta/Index" class="btn btn-facebook">GERİYE DÖN</a>
+                <button class="btn btn-success">HASTA EKLE</button>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<script src="~/Scripts/CustomScript.js"></script>
+
+
+<script src="~/Scripts/cleave.js"></script>
+<script src="~/Scripts/cleave-phone.i18n.js"></script>
+
+<script>
+    var cleave = new Cleave('#input-phone', {
+        phone: true,
+        phoneRegionCode: 'TR'
+    });
+
+    $('#select-country').change(function () {
+        cleave.setPhoneRegionCode(this.value);
+        cleave.setRawValue('');
+    });
+</script>
+

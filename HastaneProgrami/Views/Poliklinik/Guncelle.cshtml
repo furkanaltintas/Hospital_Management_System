@@ -1,0 +1,35 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.poliklinik
+
+@{
+    ViewBag.Title = "POLİKLİNİK GÜNCELLE";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <h3>Poliklinik Bilgileri</h3>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.poliklinikID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ad, "POLİKLİNİK ADI")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-university"></i></div>
+                @Html.TextBoxFor(model => model.ad, new { @class = "form-control", @maxLength = "45" })
+            </div>
+            @Html.ValidationMessageFor(model => model.ad, "", new { @class = "text-danger" })
+        </div>
+
+        <h4>@ViewBag.Hata</h4>
+
+        <div class="form-group">
+            <a href="/Poliklinik/Index" class="btn btn-facebook">Geriye Dön</a>
+            <button type="submit" class="btn btn-success">Güncelle</button>
+        </div>
+    </div>
+}
+

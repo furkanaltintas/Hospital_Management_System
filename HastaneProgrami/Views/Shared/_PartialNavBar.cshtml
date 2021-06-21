@@ -1,0 +1,194 @@
+﻿<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+        <ul class="nav" id="side-menu">
+            @*PROFİL*@
+            @if (User.IsInRole("Hasta"))
+            {
+                <li class="user-pro">
+                    <a href="#" class="waves-effect"><img src="~/Content/Img/av.png" alt="user-img" class="img-circle"> <span class="hide-menu">@Session.Contents["bilgi"]<span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="@Url.Action("KimlikBilgileri","Vatandas")"><i class="ti-user"></i> Profilim</a></li>
+                        <li><a href="@Url.Action("IletisimBilgileri","Vatandas")"><i class="ti-email"></i> İletişim Bilgileri</a></li>
+                        <li><a href="@Url.Action("ParolaIslemleri","Vatandas")"><i class="fa fa-shield"></i> Parola İşlemleri</a></li>
+                        <li><a href="@Url.Action("LogOut","Login")" style=" color: red; "><i class="fa fa-power-off"></i> Çıkış</a></li>
+                    </ul>
+                </li>
+            }
+
+            @*PROFİL*@
+            @if (User.IsInRole("Yönetici") | User.IsInRole("Uzman Doktor") | User.IsInRole("Doktor") | User.IsInRole("Sekreter") | User.IsInRole("Danışman"))
+            {
+                <li class="user-pro">
+                    <a href="#" class="waves-effect"><img src="~/Content/Img/av.png" alt="user-img" class="img-circle"> <span class="hide-menu">@Session.Contents["bilgi"]<span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="@Url.Action("KimlikBilgileri","Profil")"><i class="ti-user"></i> Profilim</a></li>
+                        <li><a href="@Url.Action("IletisimBilgileri","Profil")"><i class="ti-email"></i> İletişim Bilgileri</a></li>
+                        <li><a href="@Url.Action("ParolaIslemleri","Profil")"><i class="fa fa-shield"></i> Parola İşlemleri</a></li>
+                        <li><a href="@Url.Action("LogOut","Login")" style=" color: red; "><i class="fa fa-power-off"></i> Çıkış</a></li>
+                    </ul>
+                </li>
+            }
+            <!--Main Menu-->
+            <li class="nav-small-cap m-t-10">--- Menüler</li>
+            @if (User.IsInRole("Yönetici") | User.IsInRole("Uzman Doktor") | User.IsInRole("Doktor") | User.IsInRole("Sekreter") | User.IsInRole("Danışman"))
+            {
+                <li>
+                    <a href="@Url.Action("Index","Admin")" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> İstatistikler </span></a>
+                </li>
+            }
+
+            @*İSTATİSTİKLER*@
+            @if (User.IsInRole("Hasta"))
+            {
+                <li>
+                    <a href="@Url.Action("Index","Vatandas")" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> İstatistikler </span></a>
+                </li>
+            }
+
+            @*HASTANE ODASI*@
+            @if (User.IsInRole("Yönetici"))
+            {
+                <li>
+                    <a href="" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="b"></i> <span class="hide-menu"> Hastane Oda <span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li> <a href="@Url.Action("Index","HastaneOda")">Hastane Odaları</a></li>
+                    </ul>
+                </li>
+            }
+
+            @*AMELİYAT ODASI*@
+            @if (User.IsInRole("Yönetici"))
+            {
+                <li>
+                    <a href="" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="q"></i> <span class="hide-menu"> Ameliyat Oda <span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li> <a href="@Url.Action("TumAmeliyatOdalari","AmeliyatOda")">Tüm Ameliyat Odaları</a></li>
+                        <li> <a href="@Url.Action("Index","AmeliyatOda")">Aktif Ameliyat Odaları</a> </li>
+                        <li> <a href="@Url.Action("Gecmis","AmeliyatOda")">Eski Ameliyat Odaları</a></li>
+                    </ul>
+                </li>
+            }
+
+            @*AMELİYAT EKİBİ*@
+            @if (User.IsInRole("Yönetici"))
+            {
+                <li>
+                    <a href="" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="u"></i> <span class="hide-menu"> Ameliyat Ekibi <span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li> <a href="@Url.Action("Index","AmeliyatEkip")">Ameliyat Ekibi</a> </li>
+                    </ul>
+                </li>
+            }
+
+            @*POLİKLİNİK*@
+            @if (User.IsInRole("Yönetici"))
+            {
+                <li>
+                    <a href="" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon=")"></i> <span class="hide-menu"> Poliklinikler <span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li> <a href="@Url.Action("TumPoliklinikler","Poliklinik")">Tüm Poliklinikler</a> </li>
+                        <li> <a href="@Url.Action("Index","Poliklinik")">Aktif Poliklinikler</a> </li>
+                        <li> <a href="@Url.Action("Gecmis","Poliklinik")">Eski Poliklinikler</a> </li>
+                    </ul>
+                </li>
+            }
+
+            @*PERSONEL*@
+            @if (User.IsInRole("Yönetici"))
+            {
+                <li>
+                    <a href="" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="z"></i> <span class="hide-menu"> Personeller <span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li> <a href="@Url.Action("TumPersoneller","Personel")">Tüm Personeller</a> </li>
+                        <li> <a href="@Url.Action("Index","Personel")">Aktif Personeller</a> </li>
+                        <li> <a href="@Url.Action("Gecmis","Personel")">Eski Personeller</a> </li>
+                    </ul>
+                </li>
+            }
+
+            @*HASTALAR*@
+            @if (User.IsInRole("Yönetici") | User.IsInRole("Uzman Doktor") | User.IsInRole("Doktor") | User.IsInRole("Sekreter") | User.IsInRole("Danışman"))
+            {
+                <li>
+                    <a href="" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon=">"></i> <span class="hide-menu"> Hastalar <span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li> <a href="@Url.Action("Index","Hasta")">Hasta Listesi</a> </li>
+                        <li> <a href="@Url.Action("Ekle","Hasta")">Ekle</a> </li>
+                    </ul>
+                </li>
+            }
+
+            @*RANDEVU*@
+            @if (User.IsInRole("Yönetici") | User.IsInRole("Doktor") | User.IsInRole("Sekreter"))
+            {
+                <li>
+                    <a href="" class="waves-effect"><i data-icon="V" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Randevu<span class="fa arrow"></span> </span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="@Url.Action("Index","Randevu")">Aktif Randevular</a></li>
+                        <li><a href="@Url.Action("Gecmis","Randevu")">Geçmiş Randevular</a></li>
+                    </ul>
+                </li>
+            }
+
+            @*MUAYENE*@
+            @if (User.IsInRole("Yönetici") | User.IsInRole("Doktor") | User.IsInRole("Sekreter"))
+            {
+                <li>
+                    <a href="" class="waves-effect"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Muayene<span class="fa arrow"> </span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="@Url.Action("Index","Muayene")">Muayene</a></li>
+                        <li><a href="@Url.Action("Islem","Muayene")">Muayene Kontrol</a></li>
+                    </ul>
+                </li>
+            }
+
+            @*TAHLİL*@
+            @if (User.IsInRole("Yönetici") | User.IsInRole("Uzman Doktor") | User.IsInRole("Doktor") | User.IsInRole("Sekreter"))
+            {
+                <li>
+                    <a href="" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Tahlil<span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="/Tahlil/Index/">Tahlil Listesi</a></li>
+                        @if (User.IsInRole("Yönetici") | User.IsInRole("Doktor"))
+                        {
+                            <li><a href="@Url.Action("Islem","Tahlil")">Tahlil Yap</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+
+            @*AMELİYAT*@
+            @if (User.IsInRole("Yönetici") | User.IsInRole("Uzman Doktor"))
+            {
+                <li>
+                    <a href="" class="waves-effect"><i data-icon="W" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Ameliyat<span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="@Url.Action("Liste","Ameliyat")">Ameliyat Listesi</a></li>
+                        <li><a href="@Url.Action("Index","Ameliyat")">Hasta Listesi</a></li>
+                    </ul>
+                </li>
+            }
+
+            @*HASTA*@
+            @if (User.IsInRole("Hasta"))
+            {
+                <li>
+                    <a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="/"></i> <span class="hide-menu"> Randevu Bilgileri <span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level">
+                        <li> <a href="">Randevu Geçmişi</a> </li>
+                        <li> <a href="">Randevu Talepleri</a> </li>
+                    </ul>
+                </li>
+            }
+
+
+            <li class="nav-small-cap">--- Çıkış</li>
+            <li><a href="@Url.Action("LogOut","Login")" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Çıkış</span></a></li>
+            <!-- DESTEK -->
+            <li class="nav-small-cap">--- Destek</li>
+            <li><a href="documentation.html" class="waves-effect"><i class="fa fa-circle-o text-danger"></i> <span class="hide-menu">Red</span></a></li>
+            <li><a href="gallery.html" class="waves-effect"><i class="fa fa-circle-o text-info"></i> <span class="hide-menu">Blue</span></a></li>
+            <li><a href="faq.html" class="waves-effect"><i class="fa fa-circle-o text-success"></i> <span class="hide-menu">Green</span></a></li>
+        </ul>
+    </div>
+</div>

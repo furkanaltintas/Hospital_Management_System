@@ -1,0 +1,54 @@
+﻿@using HastaneProgrami.Models.Entity_Framework
+@model List<hastaBilgi>
+
+@{
+    ViewBag.Title = "MUAYENE BİLGİ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="form-horizontal">
+    <h3>@ViewBag.hasta Hastanın Rapor Bilgileri</h3>
+    <hr />
+
+    @if (Model.Count() == 0)
+    {
+        <div class="alert alert-danger" style="background: #fb7878; border-color: #fb7878;" role="alert">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            Hastaya ait rapor bulunmamaktadır
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success" role="alert">
+            <i class="fa fa-check-square" aria-hidden="true"></i>
+            @Model.Count() adet rapor bulunmaktadır
+        </div>
+        <table class="table table-bordered table-hover text-center">
+            <thead>
+                <tr>
+                    <th class="text-center">ALERJİLER</th>
+                    <th class="text-center">İLAÇLAR</th>
+                    <th class="text-center">HASTALIK</th>
+                    <th class="text-center">AMELİYAT</th>
+                    <th class="text-center">AMELİYAT AÇIKLAMASI</th>
+                    <th class="text-center">AMELİYAT TARİHİ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.alerjiler</td>
+                        <td>@item.ilaclar</td>
+                        <td>@item.hastalık</td>
+                        <td>@item.ameliyat</td>
+                        <td>@Html.Raw(item.aciklama)</td>
+                        <td>@item.tarih</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <a href="@Url.Action("Index","Muayene")" class="btn btn-facebook">Geriye Dön</a>
+</div>

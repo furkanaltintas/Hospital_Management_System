@@ -1,0 +1,222 @@
+﻿@using HastaneProgrami.Models.Entity_Framework
+@model List<hasta>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12">
+            <div class="white-box">
+                <div class="row row-in">
+                    <div class="col-lg-3 col-sm-6 row-in-br">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i data-icon="E" class="linea-icon linea-basic"></i>
+                                <h5 class="text-muted vb">TOPLAM VATANDAŞ SAYISI</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-danger">@ViewBag.d1</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d1%"> <span class="sr-only">@ViewBag.d1% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 row-in-br  b-r-none">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i data-icon="E" class="linea-icon linea-basic"></i>
+                                <h5 class="text-muted vb">TOPLAM PERSONEL SAYISI</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-megna">@ViewBag.d2</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-megna" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d2%"> <span class="sr-only">@ViewBag.d2% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 row-in-br">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i data-icon="E" class="linea-icon linea-basic"></i>
+                                <h5 class="text-muted vb">ÇALIŞAN POLİKLİNİK SAYISI</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-primary">@ViewBag.d3</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d3%"> <span class="sr-only">@ViewBag.d3% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6  b-0">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i data-icon="E" class="linea-icon linea-basic"></i>
+                                <h5 class="text-muted vb">TOPLAM HASTA ŞİKAYETLERİ</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-success">@ViewBag.d4</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d4%"> <span class="sr-only">@ViewBag.d4% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12">
+            <div class="white-box">
+                <div class="row row-in">
+                    <div class="col-lg-3 col-sm-6 row-in-br">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i class="ti-user"></i>
+                                @*<i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>*@
+                                <h5 class="text-muted vb">HASTANE TOPLAM YÖNETİCİ SAYISI</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-danger">@ViewBag.d5</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d5%"> <span class="sr-only">@ViewBag.d5% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 row-in-br  b-r-none">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i class="ti-user"></i>
+                                <h5 class="text-muted vb">HASTANE TOPLAM DOKTOR SAYISI</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-megna">@ViewBag.d6</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-megna" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d6%"> <span class="sr-only">@ViewBag.d6% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 row-in-br">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i class="ti-user"></i>
+                                <h5 class="text-muted vb">HASTANE TOPLAM DANIŞMAN SAYISI</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-primary">@ViewBag.d7</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d7%"> <span class="sr-only">@ViewBag.d7% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6  b-0">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i class="ti-user"></i>
+                                <h5 class="text-muted vb">HASTANE TOPLAM SEKRETER SAYISI</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-success">@ViewBag.d8</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d8%"> <span class="sr-only">@ViewBag.d8% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12">
+            <div class="white-box">
+                <div class="row row-in">
+                    <div class="col-lg-3 col-sm-6 row-in-br">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
+                                <h5 class="text-muted vb">TOPLAM MUAYENE SAYISI</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-danger">@ViewBag.d9</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d9%"> <span class="sr-only">@ViewBag.d9% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 row-in-br  b-r-none">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
+                                <h5 class="text-muted vb">TOPLAM ERKEK HASTA SAYISI</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-megna">@ViewBag.d10</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-megna" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d10%"> <span class="sr-only">@ViewBag.d10% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 row-in-br">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
+                                <h5 class="text-muted vb">TOPLAM KADIN HASTA SAYISI</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-primary">@ViewBag.d11</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d11%"> <span class="sr-only">@ViewBag.d11% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6  b-0">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
+                                <h5 class="text-muted vb">TOPLAM RANDEVU SAYISI</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-success">@ViewBag.d12</h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.d12%"> <span class="sr-only">@ViewBag.d12% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

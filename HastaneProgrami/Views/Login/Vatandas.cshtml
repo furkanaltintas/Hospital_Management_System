@@ -1,0 +1,24 @@
+﻿@using HastaneProgrami.Models.Entity_Framework
+@model HastaneProgrami.Models.Entity_Framework.hasta
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@using (Html.BeginForm("Vatandas", "Login", FormMethod.Post))
+{
+    <h3 class="box-title m-b-20">Giriş Yap</h3>
+    <div class="form-group">
+        <div class="col-xs-12">
+            @Html.TextBoxFor(m => m.TCKimlikNo, new { @class = "form-control", placeholder = "TC Kimlik Numaranızı Giriniz" })
+            @Html.ValidationMessageFor(m => m.TCKimlikNo, "", new { @style = "color: red" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12">
+            @Html.TextBoxFor(m => m.sifre, new { @class = "form-control", placeholder = "Şifreyi Giriniz", type = "password" })
+            @Html.ValidationMessageFor(m => m.sifre, "", new { @style = "color: red" })
+        </div>
+    </div>
+    @Html.Partial("_PartialLogin")
+}
+

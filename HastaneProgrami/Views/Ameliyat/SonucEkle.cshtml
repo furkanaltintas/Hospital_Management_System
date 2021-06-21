@@ -1,0 +1,50 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.ameliyatSonuc
+
+@{
+    ViewBag.Title = "AMELİYAT SONUÇ EKLE";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("SonucEkle", "Ameliyat", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ameliyatDurum, "AMELİYATI DURUM ?")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-check" aria-hidden="true"></i></div>
+                @Html.DropDownListFor(m => m.ameliyatDurum, new List<SelectListItem>
+               { new SelectListItem{Text="BİTTİ", Value="True"},
+                 new SelectListItem{Text="DEVAM EDİYOR", Value="False"}}, "AMELİYAT ONAYI", new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.ameliyatDurum, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.hastaDurum, "HASTA DURUM ?")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-check" aria-hidden="true"></i></div>
+                @Html.DropDownListFor(m => m.hastaDurum, new List<SelectListItem>
+               { new SelectListItem{Text="DURUMU İYİ", Value="True"},
+                 new SelectListItem{Text="KAYBETTİK", Value="False"}}, "HASTA DURUM", new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.hastaDurum, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.hastaneOdaID, "HASTANE ODA")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-bed" aria-hidden="true"></i></div>
+                @Html.DropDownList("hastaneOdaID", (IEnumerable<SelectListItem>)ViewBag.hastaneOda, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.hastaneOda.hastaneOdaID, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <a href="@Url.Action("Liste","Ameliyat")" class="btn btn-facebook">Geriye Dön</a>
+            <input type="submit" value="SONUÇ EKLE" class="btn btn-success" />
+        </div>
+    </div>
+}

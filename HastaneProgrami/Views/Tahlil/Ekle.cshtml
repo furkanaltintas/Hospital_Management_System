@@ -1,0 +1,73 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.tahlil
+
+@{
+    ViewBag.Title = "TAHLİL YAP";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script type="text/javascript">
+    CKEDITOR.replace('editor')
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.kanTup.ad, "KAN TÜP")
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-ticket" aria-hidden="true"></i></div>
+                    @Html.DropDownListFor(m => m.kanTup.kanTupID, (List<SelectListItem>)ViewBag.kan, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(model => model.kanTup.ad, "", new { @class = "text-danger" })
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.kanTupID, "KAN TÜP")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-close" aria-hidden="true"></i></div>
+                @Html.DropDownList("kanTupID", (IEnumerable<SelectListItem>)ViewBag.kan, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.kanTupID, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.miktar, "MİKTAR")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-ticket" aria-hidden="true"></i></div>
+                @Html.TextBoxFor(m => m.miktar, new { @class = "form-control", @type = "number" })
+            </div>
+            @Html.ValidationMessageFor(model => model.miktar, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <h4>@ViewBag.Hata</h4>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idrarTupID, "İDRAR TÜP")
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-close" aria-hidden="true"></i></div>
+                @Html.DropDownList("idrarTupID", (IEnumerable<SelectListItem>)ViewBag.idrar, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.idrarTupID, "", new { @class = "text-danger" })
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.idrarTup.ad, "İDRAR TÜP")
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-ticket" aria-hidden="true"></i></div>
+                    @Html.DropDownListFor(m => m.idrarTup.idrarTupID, (List<SelectListItem>)ViewBag.idrar, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(model => model.idrarTup.ad, "", new { @class = "text-danger" })
+            </div>*@
+
+        <div class="form-group">
+            <a href="/Tahlil/Islem" class="btn btn-facebook">Geriye Dön</a>
+            <input type="submit" value="KONTROL ET" class="btn btn-success" />
+        </div>
+    </div>
+}
+

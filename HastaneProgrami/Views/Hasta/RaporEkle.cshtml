@@ -1,0 +1,73 @@
+﻿@model HastaneProgrami.Models.Entity_Framework.hastaBilgi
+
+@{
+    ViewBag.Title = "Rapor Oluştur";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script type="text/javascript">
+    CKEDITOR.replace('editor')
+</script>
+
+@using (Html.BeginForm("RaporEkle", "Hasta", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.alerjiler, "ALERJİLER")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+            @Html.TextBoxFor(model => model.alerjiler, new { @class = "form-control", @maxLength = "50" })
+        </div>
+        @Html.ValidationMessageFor(model => model.alerjiler, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ilaclar, "İLAÇLAR")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+            @Html.TextBoxFor(model => model.ilaclar, new { @class = "form-control", @maxLength = "50" })
+        </div>
+        @Html.ValidationMessageFor(model => model.ilaclar, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hastalık, "HASTALIK")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+            @Html.TextBoxFor(model => model.hastalık, new { @class = "form-control", @maxLength = "50" })
+        </div>
+        @Html.ValidationMessageFor(model => model.hastalık, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ameliyat, "AMELİYAT")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-image" aria-hidden="true"></i></div>
+            @Html.TextBoxFor(x => x.ameliyat, new { @class = "form-control", @maxLenght = "50" })
+        </div>
+        @Html.ValidationMessageFor(model => model.ameliyat, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.aciklama, "AÇIKLAMA")
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></div>
+            <textarea name="aciklama" class="ckeditor"></textarea>
+        </div>
+        @Html.ValidationMessageFor(model => model.aciklama, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @ViewBag.HastaBilgi
+    </div>
+
+    <div class="form-group">
+        <a href="/Hasta/Index" class="btn btn-facebook">Geriye Dön</a>
+        <input type="submit" value="RAPOR EKLE" class="btn btn-success" />
+    </div>
+</div>
+}
+
